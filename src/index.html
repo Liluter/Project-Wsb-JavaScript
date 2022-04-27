@@ -4,10 +4,65 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <link rel="stylesheet" href="style.css" />
+        <title>Flightbook</title>
     </head>
     <body>
-        <h1>Hello World</h1>
-        <!-- <script src="bundle.js"></script> -->
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img  alt="Logo" />
+                </div>
+                <ul class="menu">
+                    <li class="location-time">15:23 Wrocław</li>
+                    <li class="location-weather">Słonecznie 24,5℃</li>
+                    <li><img class="logo-weather-state" src="./assets/images/Sunny2.svg" alt="weather-state" /></li>
+                    <li><img class="avatar" src="./assets/images/avatarOpt.svg" alt="" /></li>
+                    <li><button class="btn-login">Login</button></li>
+                </ul>
+            </nav>
+            <main class="main">
+                <div class="main-content">
+                    <div class="row one">
+                        <div class="btn arrival">
+                            <img src="./assets/images/plane-departure.svg" alt="" />
+                            <p>Wrocław</p>
+                        </div>
+                        <!-- <div class="popup">asas</div> -->
+                        <div class="btn departure">
+                            <img src="./assets/images/plane-arrival.svg" alt="" />
+                            <p>Paryż</p>
+                        </div>
+                    </div>
+
+                    <div class="row two">
+                        <div class="btn date departure">
+                            <img src="./assets/images/calendar-days-solid.svg" alt="" />
+                            <p>16.04.2022</p>
+                        </div>
+
+                        <div class="btn date arrival">
+                            <img src="./assets/images/calendar-days-solid.svg" alt="" />
+                            <p>24.04.2022</p>
+                        </div>
+                    </div>
+                    <div class="row three">
+                        <div class="btn passangers">
+                            <img src="./assets/images/person-circle-plus-solid.svg" alt="" />
+                            <div class="numPass">1</div>
+                            <img src="./assets/images/person-circle-minus-solid.svg" alt="" />
+                        </div>
+                        <div class="btn accept">
+                            <p>Potwierdź</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <aside class="aside">
+                <div class="aside-content">aside content</div>
+            </aside>
+
+            <footer class="footer">Flightbook © All right reserved 2022</footer>
+        </div>
     </body>
 </html>
