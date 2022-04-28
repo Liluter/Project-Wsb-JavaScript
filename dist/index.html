@@ -4,9 +4,8 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
         <title>Flightbook</title>
-    <script defer src="index.ebe24558f4162d7b97ce.bundle.js"></script><link href="index.css" rel="stylesheet"></head>
+    <script defer src="index.4a6b1854b4d9c1c28ead.bundle.js"></script><link href="index.css" rel="stylesheet"></head>
     <body>
         <div class="container">
             <nav class="navbar">
@@ -24,9 +23,27 @@
             <main class="main">
                 <div class="main-content">
                     <div class="row one">
-                        <div class="btn arrival">
+                        <button type = "button" class="btn arrival open-modal " data-open="modal1">
                             <img src="./assets/images/plane-departure.svg" alt="" />
                             <p>Wrocław</p>
+                        </button>
+                        <!-- Miejsce na modal dialog -->
+                        <div class="modal" id="modal1" data-animation="slideInOutLeft">
+                            <div class="modal-dialog">
+                                <header class="modal-header">
+                                    Lorem ipsum dolor sit amet.
+                                    <button class="close-modal" aria-label="close modal" data-close>✕</button>
+                                </header>
+                                <section class="modal-content">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.                                    
+                                </section>
+                                <footer class="modal-footer">
+                                    stopka
+                                    <button class="close-modal" aria-label="close modal" >
+                                        <button  data-aprove>Aprove</button>
+                                    </button>
+                                </footer>
+                            </div>
                         </div>
                         <!-- <div class="popup">asas</div> -->
                         <div class="btn departure">
@@ -64,5 +81,6 @@
 
             <footer class="footer">Flightbook © All right reserved 2022</footer>
         </div>
+        <script src="/src/modal.js"></script>
     </body>
 </html>

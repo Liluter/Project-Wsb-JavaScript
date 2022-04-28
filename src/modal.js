@@ -1,5 +1,3 @@
-import style from "./css/index.scss";
-
 // ===Modal===
 const openEls = document.querySelectorAll("[data-open]");
 const isVisible = "is-visible";
@@ -40,19 +38,16 @@ for (const el of aproveEls) {
 // Clicking outside modal
 // const isVisible = "is-visible";
 
-document.addEventListener(
-    "click",
-    (e) => {
-        if (
-            (e.target == document.querySelector(".main.content") || e.target == document.querySelector(".main") || e.target == document.querySelector(".row")) &&
-            document.querySelector(".modal.is-visible")
-        ) {
-            document.querySelector(".modal.is-visible").classList.remove(isVisible);
-            console.log("test");
-        }
-    },
-    false
-);
+document.addEventListener("click", (e) => {
+    // console.log("kliknięto", e.target);
+    // console.log("parent", e.target.parentElement);
+    // console.log("1 kid", e.target.firstChild);
+
+    if ((e.target == document.querySelector(".container") || e.target == document.querySelector("body")) && document.querySelector(".modal.is-visible")) {
+        document.querySelector(".modal.is-visible").classList.remove(isVisible);
+        console.log("test");
+    }
+});
 
 // const isVisible = "is-visible";
 // pressing key up wsc
@@ -62,3 +57,4 @@ document.addEventListener("keyup", (e) => {
         document.querySelector(".modal.is-visible").classList.remove(isVisible);
     }
 });
+
