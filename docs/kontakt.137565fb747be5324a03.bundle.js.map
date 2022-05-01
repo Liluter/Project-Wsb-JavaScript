@@ -1,0 +1,1 @@
+{"version":3,"file":"kontakt.137565fb747be5324a03.bundle.js","mappings":";;;;;AAAAA,OAAO,CAACC,GAAR,CAAY,sBAAZ,E","sources":["webpack://projectwsbjs/./src/kontakt.js"],"sourcesContent":["console.log(\"This is kontakt page\")"],"names":["console","log"],"sourceRoot":""}

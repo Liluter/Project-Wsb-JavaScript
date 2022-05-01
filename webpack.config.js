@@ -10,7 +10,7 @@ module.exports = {
         kontakt_head: "./src/css/kontakt.css",
     },
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "docs"),
         filename: "[name].[contenthash].bundle.js",
         clean: true,
         assetModuleFilename: 'assets/images/[hash][ext][query]' // ten zapis dodany dla asset module aby przekierować z domyśnego ./ na ./assets/imgages
@@ -18,7 +18,7 @@ module.exports = {
     devtool: "source-map",
     devServer: {
         static: {
-            directory: path.join(__dirname, "dist"),
+            directory: path.join(__dirname, "docs"),
         },
         port: 9000,
     },
@@ -35,7 +35,7 @@ module.exports = {
             inject: true,
             filename: "kontakt.html",
         }),
-        new MiniCssExtractPlugin(), // tworzenie pliku css w dist
+        new MiniCssExtractPlugin(), // tworzenie pliku css w docs było dist
         new CopyWebpackPlugin({  // kopiowanie assetów dodatkowych do wskazanego folderu bez url
             patterns: [ 
                 {
