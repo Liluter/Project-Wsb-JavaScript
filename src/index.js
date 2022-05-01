@@ -62,3 +62,47 @@ document.addEventListener("keyup", (e) => {
         document.querySelector(".modal.is-visible").classList.remove(isVisible);
     }
 });
+
+// Wybór celu podróży destination do wyniesienia do modułów
+
+const selectDest = document.getElementById("select-dest");
+const result = document.getElementById("show-dest");
+const acceptDest = document.getElementById("set-dest");
+const resultDest = document.getElementById("result-dest");
+const resultDest2 = document.getElementById("btn-label-depart");
+const resultDestClass = document.getElementsByClassName("result-dest");
+
+class Where {
+    constructor(dest) {
+    this.cel = dest;
+    }
+    
+    Write() {
+        console.log('z klasy komunikat');
+        if (this.cel == "warsaw") {
+            this.cel = "Warszawa";
+        } else if (this.cel == "london") {
+            this.cel = "Londyn";
+        } else if (this.cel == "newyork") {
+            this.cel = "Nowy York";
+        }
+        return `${this.cel}`;
+    }
+}
+
+
+acceptDest.addEventListener("click", () => {
+    const tempDest = new Where(selectDest.value);
+    // result.textContent = tempDest.Write();
+    console.log("zakceptowano : ",selectDest.value);
+    // resultDest.textContent = tempDest.Write();
+    // resultDest2.textContent = tempDest.Write();
+    resultDestClass[0].textContent = tempDest.Write()
+    resultDestClass[1].textContent = tempDest.Write()
+},false);
+
+selectDest.addEventListener("change", () => {
+    console.log("na wydarzenia zmiany", selectDest.value);
+    const tempDest = new Where(selectDest.value);
+    result.textContent = tempDest.Write();
+},false);

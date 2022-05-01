@@ -39,7 +39,7 @@ module.exports = {
         new CopyWebpackPlugin({  // kopiowanie assetów dodatkowych do wskazanego folderu bez url
             patterns: [ 
                 {
-                    from: "./src/assets/**",
+                    from: "./src/assets/images/*",
                     to() {
                         return "assets/images/[name][ext]";
                     },
@@ -52,7 +52,7 @@ module.exports = {
             {
                 test: /\.scss$/i, //ładujemy scss a do niego ewentualnie następne poprzez import
                 use: [
-                    MiniCssExtractPlugin.loader, // lub "style-loader" który do taga domyslnie laduje
+                    "style-loader",// MiniCssExtractPlugin.loader, // lub  który do taga domyslnie laduje
                     "css-loader",
                     "sass-loader",
                     {
@@ -68,7 +68,7 @@ module.exports = {
             {
                 test: /\.css$/i, //ładujemy css jeśli jest wymagany 
                 use: [
-                    MiniCssExtractPlugin.loader, // za pomocą "style-loader" który do taga domyslnie laduje
+                    "style-loader", // za pomocą "style-loader" który do taga domyslnie laduje
                     "css-loader",
                     "sass-loader", // spróbuje to wyłączyć "sass-loader",
                     {
