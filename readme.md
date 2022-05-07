@@ -83,10 +83,11 @@ ICAO: KJFK
 FAA: JFK
 
 
+
 Latitude: 
-40-38-23.7400N (40.639928)
+40-38-23.7400N (40.639928)  40.6329
 Longitude: 
-073-46-43.2930W (-73.778693)
+073-46-43.2930W (-73.778693)   -73.7714
 Elevation: 
 13.0 feet MSL (4 m MSL)
 Magnetic Variation: 
@@ -227,6 +228,8 @@ UTC +2.0 (Daylight Savings Time)
   "cod": 200
 }
 
+Stany pogodowe
+"Clear", "Rain", "Snow", "Extreme", "Clouds", "Drizzle",
 
 
 

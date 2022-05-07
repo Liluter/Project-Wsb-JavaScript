@@ -93,7 +93,7 @@ button.close-modal:hover{
     background: rgb(43 81 139);
     cursor: pointer;
     visibility: hidden;
-    opacity: 0;
+    opacity: 0.5;
     transition: all 0.35s ease-in;
     border-radius: 5px;
     overflow:auto;
@@ -136,7 +136,7 @@ button.close-modal:hover{
 }
 
 
-#select-dest {
+#select-dest, #select-depart {
     margin: 8px;
 }
 
@@ -206,6 +206,24 @@ button.close-modal:hover{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+#linkDepartSite, #linkDepartInfo, #linkDestSite, #linkDestInfo   {
+    
+    padding: 4px;
+    text-decoration: none;
+}
+
+#linkDepartSite:hover,#linkDepartInfo:hover,#linkDestSite:hover,#linkDestInfo:hover{
+    color:rgb(214, 214, 214);
+}
+
+.footerLinksDest, .footerLinksDepart {
+    visibility: hidden;
+}
+
+.show {
+    visibility:visible; 
 }
 
 [data-aprove] {

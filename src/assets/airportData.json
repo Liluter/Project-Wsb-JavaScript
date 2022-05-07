@@ -1,0 +1,52 @@
+{
+    "airport": {
+        "wroclaw": {
+            "name": "Port lotniczy Wrocław-Strachowice",
+            "lat": "51.109444",
+            "long": "16.880278",
+            "iata": "WRO",
+            "homepage": "https://airport.wroclaw.pl",
+            "infopage": "https://airportguide.com/airport/info/WRO",
+            "temp": 15,
+            "wind": 0.5,
+            "weatherDesc": "bezchmurnie",
+            "weather": "Clear"
+        },
+        "london": {
+            "name": "Londyn Heathrow",
+            "lat" : "51.4706",
+            "long": "-.461941",
+            "iata": "LHR",
+            "homepage": "https://www.heathrow.com",
+            "infopage": "https://airportguide.com/airport/info/LHR",
+            "temp": 7,
+            "wind": 0.5,
+            "weatherDesc": "bezchmurnie",
+            "weather": "Clear"
+        },
+        "poznan": {
+            "name": "Port Lotniczy Poznań-Ławica im. Henryka Wieniawskiego",
+            "lat" : "52.421001",
+            "long": "16.8263",
+            "iata": "POZ",
+            "homepage": "http://www.airport-poznan.com.pl/",
+            "infopage": "https://airportguide.com/airport/info/POZ",
+            "temp": 7,
+            "wind": 0.5,
+            "weatherDesc": "bezchmurnie",
+            "weather": "Clear"
+        },
+        "newyork": {
+            "name": "Port lotniczy Johna F. Kenned'ego",
+            "lat" : "40.6329",
+            "long": "-73.7714",
+            "iata": "JFK",
+            "homepage": "https://www.jfkairport.com",
+            "infopage": "https://airportguide.com/airport/info/JFK",
+            "temp": 7,
+            "wind": 0.5,
+            "weatherDesc": "bezchmurnie",
+            "weather": "Clear"
+        }
+    }
+}

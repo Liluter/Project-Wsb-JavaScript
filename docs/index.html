@@ -5,17 +5,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Flightbook</title>
-    <script defer src="index.9489fd209cc8c5264e8a.bundle.js"></script></head>
+    <script defer src="index.facc6385cb160f8688c1.bundle.js"></script></head>
     <body>
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <img  alt="Logo" />
+                    <img title="Flightbook" alt="Logo" />
                 </div>
                 <ul class="menu">
-                    <li class="location-time">15:23 Wrocław</li>
-                    <li class="location-weather">Słonecznie 24,5℃</li>
-                    <li><img class="logo-weather-state" src="./assets/images/Sunny2.svg" alt="weather-state" /></li>
+                    <!-- <li  class="location-time">15:23 Wrocław</li> -->
+                    <li title="Lokalizacja | Aura | Temperatura | prędkość wiatru m/s" id="location-weather" class="location-weather">Słonecznie 24,5℃</li>
+                    <li><img id="weatherIcon" class="logo-weather-state" src="./assets/images/Sunny2.svg" alt="weather-state" /></li>
                     <li><img class="avatar" src="./assets/images/avatarOpt.svg" alt="" /></li>
                     <li class="btn-login-apear"><button class="btn-login">Login</button></li>
                 </ul>
@@ -44,10 +44,8 @@
                                     <!-- <div id="show-depart">Wrocław</div> -->
                                 </section>
                                 <footer class="modal-footer">
-                                    economy
-                                    <button class="close-modal" aria-label="close modal" >
-                                        <button  data-aprove>Aprove</button>
-                                    </button>
+                                    <a id="linkDepartSite" class="footerLinksDepart" href="#"><p>Strona Lotniska link</p> </a>
+                                    <a id="linkDepartInfo" class="footerLinksDepart" href="#"><p>More info</p></a>
                                 </footer>
                             </div>
                         </div>
@@ -67,7 +65,7 @@
                                 <section class="modal-content">
                                     <select name="destination" id="select-dest">
                                         <option value="" placeholder selected disabled >Wybierz cel podróży</option>
-                                        <option value="warsaw">Warszawa</option>
+                                        <option value="poznan">Poznań</option>
                                         <option value="london">Londyn</option>
                                         <option value="newyork">Nowy York</option>
                                     </select>
@@ -75,10 +73,8 @@
                                 </section>
 
                                 <footer class="modal-footer">
-                                    economy
-                                    <button class="close-modal" aria-label="close modal" >
-                                        <button  data-aprove>Aprove</button>
-                                    </button>
+                                    <a id="linkDestSite" class="footerLinksDest" href="#"><p>Strona Lotniska</p></a>
+                                    <a id="linkDestInfo" class="footerLinksDest" href="#"><p>More info</p></a>
                                 </footer>
                             </div>
                         </div>
@@ -110,9 +106,9 @@
                 </div>
             </main>
             <aside class="aside">
-                <div class="aside-content">aside content
-                    <h1>Wyniki wyboru</h1>
-                    <p>Wylot : <span>Wrocław</span> / Miejsce docelowe: <span class="result-dest"id="result-dest">Nie wybrano</span> / Liczba osób : <span> 0 </span> / Bagaż : <span> brak</span></p>
+                <div class="aside-content">
+                    <h3>Wyniki wyboru</h3>
+                    <p>Wylot : <span class="result-depart">Wrocław</span> / Miejsce docelowe: <span class="result-dest"id="result-dest">Nie wybrano</span> / Liczba osób : <span> 0 </span> / Bagaż : <span> brak</span></p>
                     <div class="template"></div>
                 </div>
             </aside>
