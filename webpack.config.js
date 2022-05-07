@@ -10,7 +10,7 @@ module.exports = {
         kontakt_head: "./src/css/kontakt.css",
     },
     output: {
-        path: path.resolve(__dirname, "docs"),
+        path: path.resolve(__dirname, "docs"), // trzeba było zamienić na docs ze względu na github
         filename: "[name].[contenthash].bundle.js",
         clean: true,
         assetModuleFilename: 'assets/images/[hash][ext][query]' // ten zapis dodany dla asset module aby przekierować z domyśnego ./ na ./assets/imgages
@@ -35,13 +35,19 @@ module.exports = {
             inject: true,
             filename: "kontakt.html",
         }),
-        new MiniCssExtractPlugin(), // tworzenie pliku css w docs było dist
+        new MiniCssExtractPlugin(), // tworzenie pliku css w docs było dist 
         new CopyWebpackPlugin({  // kopiowanie assetów dodatkowych do wskazanego folderu bez url
             patterns: [ 
                 {
                     from: "./src/assets/images/*",
                     to() {
                         return "assets/images/[name][ext]";
+                    },
+                },
+                {
+                    from: "./src/assets/*",
+                    to() {
+                        return "assets/[name][ext]";
                     },
                 },
             ],

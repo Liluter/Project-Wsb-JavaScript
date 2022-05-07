@@ -41,6 +41,7 @@ button.close-modal {
     font-size: 1.5rem;
     font-weight: 900;
     color: var(--dark);
+    margin-right:12px;
 }
 button.close-modal:hover{
     color: var(--hot);
@@ -99,6 +100,16 @@ button.close-modal:hover{
     width:100%;
 }
 
+.modal-header>p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight:600;
+    font-size: 14px;
+    line-height: 15px;
+    margin-left:12px;
+    color: #2b518b;
+}
+
 .modal-dialog {
     /* position:relative;
     top:11%; */
@@ -116,11 +127,47 @@ button.close-modal:hover{
 } */
 
 .modal-content {
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
     padding: 22px 0;
-    
-
 }
+
+
+#select-dest {
+    margin: 8px;
+}
+
+.btn-save {
+    padding-left: 4px;
+    padding-right: 4px;
+    width: 84px;
+    height:32px;
+    /* dark green stroke1 */
+    color: #20742D;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 15px;
+    background: #7d92b3;
+    border: 1px solid #7d92b3;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color:#e5e5e5;
+    margin: 8px;
+}
+
+.btn-save:hover {
+    background: #0f68ee;
+    /* dark green stroke1 */
+    border: 1px solid #e5e5e5;
+    color: #e5e5e5;
+}
+
+
 
 .modal-header,
 .modal-footer {

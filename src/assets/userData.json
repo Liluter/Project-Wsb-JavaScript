@@ -1,0 +1,12 @@
+[
+    {
+        "id": 0,
+        "city":  "wroclaw",
+        "city2": "Wrocław",
+        "lat": 51.102699,
+        "long": 16.885799,
+        "name": "Port lotniczy Wrocław im. Mikołaja Kopernika",
+        "name2": "Copernicus Airport Wrocław",
+        "wether": "clear sky"
+    }
+]

@@ -1,0 +1,197 @@
+[
+    {
+        "iata": "UTK",
+        "lon": "169.86667",
+        "iso": "MH",
+        "status": 1,
+        "name": "Utirik Airport",
+        "continent": "OC",
+        "type": "airport",
+        "lat": "11.233333",
+        "size": "small"
+    },
+    {
+        "iata": "FIV",
+        "iso": "US",
+        "status": 1,
+        "name": "Five Finger CG Heliport",
+        "continent": "NA",
+        "type": "heliport",
+        "size": null
+    },
+    {
+        "iata": "FAK",
+        "iso": "US",
+        "status": 1,
+        "name": "False Island Seaplane Base",
+        "continent": "NA",
+        "type": "seaplanes",
+        "size": null
+    },
+    {
+        "iata": "BWS",
+        "iso": "US",
+        "status": 0,
+        "name": "Blaine Municipal Airport",
+        "continent": "NA",
+        "type": "closed",
+        "size": null
+    },
+    {
+        "iata": "WKK",
+        "lon": "-158.61111",
+        "iso": "US",
+        "status": 1,
+        "name": "Aleknagik / New Airport",
+        "continent": "NA",
+        "type": "airport",
+        "lat": "59.27778",
+        "size": "medium"
+    },
+    {
+        "iata": "TSS",
+        "iso": "US",
+        "status": 1,
+        "name": "East 34th Street Heliport",
+        "continent": "NA",
+        "type": "heliport",
+        "size": null
+    },
+    {
+        "iata": "FOB",
+        "lon": "-123.79444",
+        "iso": "US",
+        "status": 1,
+        "name": "Fort Bragg Airport",
+        "continent": "NA",
+        "type": "airport",
+        "lat": "39.474445",
+        "size": "small"
+    },
+    {
+        "iata": "ABP",
+        "lon": "141.1",
+        "iso": "PG",
+        "status": 1,
+        "name": "Atkamba Airport",
+        "continent": "OC",
+        "type": "airport",
+        "lat": "-6.066667",
+        "size": "small"
+    },
+    {
+        "iata": "ALV",
+        "iso": "AD",
+        "status": 1,
+        "name": "Andorra la Vella Heliport",
+        "continent": "EU",
+        "type": "heliport",
+        "size": null
+    },
+    {
+        "iata": "ADC",
+        "lon": "145.73334",
+        "iso": "PG",
+        "status": 1,
+        "name": "Andakombe Airport",
+        "continent": "OC",
+        "type": "airport",
+        "lat": "-7.133333",
+        "size": "small"
+    },
+    {
+        "iata": "TJP",
+        "lon": "-66.563545",
+        "iso": "PR",
+        "status": 1,
+        "name": "Areopuerto Internacional Michael Gonzalez",
+        "continent": "NA",
+        "type": "airport",
+        "lat": "18.010702",
+        "size": "large"
+    },
+    {
+        "iata": "AEE",
+        "iso": "SS",
+        "status": 1,
+        "name": "Adareil Airport",
+        "continent": "AF",
+        "type": "airport",
+        "size": "small"
+    },
+    {
+        "iata": "AEI",
+        "iso": "ES",
+        "status": 1,
+        "name": "Algeciras Heliport",
+        "continent": "EU",
+        "type": "heliport",
+        "size": null
+    },
+    {
+        "iata": "AEK",
+        "lon": "146.28334",
+        "iso": "PG",
+        "status": 1,
+        "name": "Aseki Airport",
+        "continent": "OC",
+        "type": "airport",
+        "lat": "-7.366667",
+        "size": "small"
+    },
+    {
+        "iata": "OLR",
+        "lon": "36.130333",
+        "iso": "AF",
+        "status": 1,
+        "name": "Salerno Landing Zone Airport",
+        "continent": "AS",
+        "type": "airport",
+        "lat": "34.023167",
+        "size": "small"
+    },
+    {
+        "iata": "AFR",
+        "lon": "148.38333",
+        "iso": "PG",
+        "status": 1,
+        "name": "Afore Airstrip",
+        "continent": "OC",
+        "type": "airport",
+        "lat": "-9.133333",
+        "size": "small"
+    },
+    {
+        "iata": "AFT",
+        "lon": "160.85",
+        "iso": "SB",
+        "status": 1,
+        "name": "Afutara Aerodrome",
+        "continent": "OC",
+        "type": "airport",
+        "lat": "-9.2",
+        "size": "small"
+    },
+    {
+        "iata": "ATD",
+        "lon": "161.03334",
+        "iso": "SB",
+        "status": 1,
+        "name": "Uru Harbour Airport",
+        "continent": "OC",
+        "type": "airport",
+        "lat": "-8.866667",
+        "size": "small"
+    },
+    {
+        "iata": "VEV",
+        "lon": "159.55",
+        "iso": "SB",
+        "status": 1,
+        "name": "Barakoma Airport",
+        "continent": "OC",
+        "type": "airport",
+        "lat": "-7.85",
+        "size": "small"
+    }
+]

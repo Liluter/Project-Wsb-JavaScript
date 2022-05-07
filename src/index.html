@@ -13,8 +13,8 @@
                     <img  alt="Logo" />
                 </div>
                 <ul class="menu">
-                    <li class="location-time">15:23 Wrocław</li>
-                    <li class="location-weather">Słonecznie 24,5℃</li>
+                    <!-- <li  class="location-time">15:23 Wrocław</li> -->
+                    <li id="location-weather" class="location-weather">Słonecznie 24,5℃</li>
                     <li><img class="logo-weather-state" src="./assets/images/Sunny2.svg" alt="weather-state" /></li>
                     <li><img class="avatar" src="./assets/images/avatarOpt.svg" alt="" /></li>
                     <li class="btn-login-apear"><button class="btn-login">Login</button></li>
@@ -26,30 +26,23 @@
                     <div class="row one">
                         <button  class="btn arrival open-modal " data-open="modal1">
                             <img src="./assets/images/plane-departure.svg" alt="" />
-                            <p>Wrocław</p>
+                            <p class="result-depart" id="btn-label-depart">Odlot</p>
                         </button>
                         <!-- Dropdown na modal dialog -->
                         <div class="modal" id="modal1" data-animation="slideInOutLeft">
                             <div class="modal-dialog">
                                 <header class="modal-header">
-                                    Odlot z:
+                                    <p>Wybierz miejsce odlotu:</p> 
                                     <button class="close-modal" aria-label="close modal" data-close>✕</button>
                                 </header>
                                 <section class="modal-content">
-                                    <p>Wrocław</p> <br></br> <p>Polska</p>  
-                                </section>
-                                <section class="modal-content">
-                                    <p>Wybierz miejsce odlotu:</p> 
                                     <select name="departure" id="select-depart">
-                                        <option value="" placeholder selected disabled >Wybierz zawód</option>
+                                        <option value="" placeholder selected disabled >Odlot z</option>
                                         <option value="wroclaw">Wrocław</option>
                                     </select>
-                                    <button class="btn-login" id="set-depart">Wybierz</button>
-                                    <div id="show-depart">Wrocław</div>
+                                    <button class="btn-save" id="set-depart">Wybierz</button>
+                                    <!-- <div id="show-depart">Wrocław</div> -->
                                 </section>
-
-
-
                                 <footer class="modal-footer">
                                     economy
                                     <button class="close-modal" aria-label="close modal" >
@@ -62,25 +55,23 @@
                         <!-- Dropdown wyboru miejsca przylotu-->
                         <div class="btn departure open-modal" data-open="modal2">
                             <img src="./assets/images/plane-arrival.svg" alt="" />
-                            <p class="result-dest" id="btn-label-depart">Paryż</p>
+                            <p class="result-dest" id="btn-label-dest">Cel lotu</p>
                         </div>
 
                         <div class="modal" id="modal2" data-animation="slideInOutLeft">
                             <div class="modal-dialog">
                                 <header class="modal-header">
-                                    Przylot do:
+                                    <p>Wybierz miejsce docelowe</p> 
                                     <button class="close-modal" aria-label="close modal" data-close>✕</button>
                                 </header>
                                 <section class="modal-content">
-                                    <p>Wybierz miejsce docelowe</p> 
                                     <select name="destination" id="select-dest">
-                                        <option value="" placeholder selected disabled >Wybierz zawód</option>
+                                        <option value="" placeholder selected disabled >Wybierz cel podróży</option>
                                         <option value="warsaw">Warszawa</option>
                                         <option value="london">Londyn</option>
                                         <option value="newyork">Nowy York</option>
                                     </select>
-                                    <button class="btn-login" id="set-dest">Wybierz</button>
-                                    <div id="show-dest">Nowhere</div>
+                                    <button class="btn-save" id="set-dest">Wybierz</button>
                                 </section>
 
                                 <footer class="modal-footer">
@@ -121,7 +112,8 @@
             <aside class="aside">
                 <div class="aside-content">aside content
                     <h1>Wyniki wyboru</h1>
-                    <p>Wylot : <span>Wrocław</span> / Miejsce docelowe: <span class="result-dest"id="result-dest"> Nie wybrano</span> / Liczba osób : <span> 0 </span> / Bagaż : <span> brak</span></p>
+                    <p>Wylot : <span>Wrocław</span> / Miejsce docelowe: <span class="result-dest"id="result-dest">Nie wybrano</span> / Liczba osób : <span> 0 </span> / Bagaż : <span> brak</span></p>
+                    <div class="template"></div>
                 </div>
             </aside>
 
