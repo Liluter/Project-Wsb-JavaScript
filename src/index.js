@@ -1,19 +1,46 @@
 import style from "./css/index.scss";
 import baza from "./assets/airportData.json";
 
-let currentDate = new Date();
+let day = 86400000;
 let currentTime = new Date();
 
 currentTime = currentTime.toLocaleTimeString();
-currentDate = currentDate.toLocaleDateString();
 
-console.log(currentTime);
-console.log(currentDate);
+let currentDate = new Date(); //1
+let calCurrentDate = currentDate.toISOString().slice(0, 10);
+console.log(currentDate.getDate(), "currentDate getDate ");
+console.log(currentDate.toISOString().slice(0, 10), "currentDate odcięte pod kalendarz"); //2
+console.log(Date(currentDate.getTime()), "get time"); //daje milisekundy od początku // 3 to są milis
+
+let tommorow = new Date(currentDate.getTime() + day);
+console.log(tommorow.getDay(), "tommorow getdate"); // który jutro
+console.log(tommorow.getMonth(), "tommorow getdate"); // który jutro
+console.log(tommorow.getFullYear(), "tommorow getdate"); // który jutro
+let calTomorrow = tommorow.toISOString().slice(0, 10);
+console.log(calTomorrow, "jutro obcięte pod kalendarz");
+
+let inFiveDays = new Date(Date.parse("2022-05-12")); // za 5 dni z klendarza
+// console.log(inFiveDays.toISOString().slice(0,10),"inFiveDays odciete"); // za 5 dni odciete
+console.log(inFiveDays.getDate(), "inFiveDays "); // za 5 dni odciete jest 12
+console.log(inFiveDays.getDate() - currentDate.getDate(), "różnica dni między przyszłoscia a dzisiaj "); // za 5 dni odciete jest 12
+
+// let odczyt z arrivalDate i porównać z tommorow
+
+// let dzis = Date.parse('2022-05-07');
+// console.log(wczoraj, " wczoraj");
+// console.log(dzis, "dzisiaj");
+// console.log((dzis - wczoraj)/3600000," godziny");
+// console.log(calDate);
+
+// let parseDate = Date.parse(calDate);
+// console.log((parseDate-(wczoraj-(3600000*24)))/(3600000*24), "dni");
+
+// let tommorow = new Date(currentDate.getTime() + day);
+// console.log(tommorow.toISOString().slice(0,10),"jutro obcięte");
 
 // console.log(currentData.toLocaleDateString().split('.'));
 
-
-const airportData = {
+let airportData = {
     "airport": {
         "wroclaw": {
             "name": "Port lotniczy Wrocław-Strachowice",
@@ -25,11 +52,11 @@ const airportData = {
             "temp": 15,
             "wind": 0.5,
             "weatherDesc": "bezchmurnie",
-            "weather": "Clear"
+            "weather": "Clear",
         },
         "london": {
             "name": "Londyn Heathrow",
-            "lat" : "51.4706",
+            "lat": "51.4706",
             "long": "-.461941",
             "iata": "LHR",
             "homepage": "https://www.heathrow.com",
@@ -37,11 +64,11 @@ const airportData = {
             "temp": 7,
             "wind": 0.5,
             "weatherDesc": "bezchmurnie",
-            "weather": "Clear"
+            "weather": "Clear",
         },
         "poznan": {
             "name": "Port Lotniczy Poznań-Ławica im. Henryka Wieniawskiego",
-            "lat" : "52.421001",
+            "lat": "52.421001",
             "long": "16.8263",
             "iata": "POZ",
             "homepage": "http://www.airport-poznan.com.pl/",
@@ -49,11 +76,11 @@ const airportData = {
             "temp": 7,
             "wind": 0.5,
             "weatherDesc": "bezchmurnie",
-            "weather": "Clear"
+            "weather": "Clear",
         },
         "newyork": {
             "name": "Port lotniczy Johna F. Kenned'ego",
-            "lat" : "40.6329",
+            "lat": "40.6329",
             "long": "-73.7714",
             "iata": "JFK",
             "homepage": "https://www.jfkairport.com",
@@ -61,20 +88,30 @@ const airportData = {
             "temp": 7,
             "wind": 0.5,
             "weatherDesc": "bezchmurnie",
-            "weather": "Clear"
-        }
-    }
-};  
+            "weather": "Clear",
+        },
+    },
+    "trip": {
+        "departuredate": "",
+        "arrivaldate": "",
+    },
+    "airplanes": {
+        "small": "",
+        "bid": "",
+        "biggest": ""
+    },
+    "passangers" : 0
+};
+
+const ticketData = {};
 
 const weatherIcons = {
     "clear": "./assets/images/Sunny2.svg",
     "rain": "./assets/images/Rain.svg",
     "clouds": "./assets/images/Clouds.svg",
     "drizzle": "./assets/images/SunCloud2.svg",
-    "extreme": "./assets/images/Windy.svg"
-}
-
-
+    "extreme": "./assets/images/Windy.svg",
+};
 
 // fetch("http://api.openweathermap.org/data/2.5/weather?lat=51.11&lon=17.02&appid=e88cbba2770d843c73cbfc59c2d7a3b0")
 //   .then(response => response.json())
@@ -109,10 +146,10 @@ const navWeatherStatus = document.getElementById("location-weather");
 
 // actWeatherNav();
 
-const weatherIcon = document.getElementById('weatherIcon');
+const weatherIcon = document.getElementById("weatherIcon");
 
 // console.log(weatherIcon.getAttribute('src'));
-weatherIcon.setAttribute('src', weatherIcons.clear)
+weatherIcon.setAttribute("src", weatherIcons.clear);
 // console.log(weatherIcon.getAttribute('src'));
 // chwilę obiekt trzeba dopisać
 
@@ -127,39 +164,38 @@ function actWeatherDest(where) {
             // console.log(Object.keys(airportData.airport));
             // console.log(where, airportData.airport[where].lat, airportData.airport[where].long);
             if (where == "wroclaw") {
-                navWeatherStatus.textContent = `${currentTime} | ${actWeatherData.name} | ${actWeatherData.weather[0].description} | ${(actWeatherData.main.temp).toFixed(1)} ℃ | ${actWeatherData.wind.speed} km/h`;
+                navWeatherStatus.textContent = `${currentTime} | ${actWeatherData.name} | ${actWeatherData.weather[0].description} | ${actWeatherData.main.temp.toFixed(1)} ℃ | ${
+                    actWeatherData.wind.speed
+                } km/h`;
                 switch (airportData.airport[where].weather) {
                     case "Clear":
-                        weatherIcon.setAttribute('src', weatherIcons.clear);
+                        weatherIcon.setAttribute("src", weatherIcons.clear);
                         break;
                     case "Clouds":
-                        weatherIcon.setAttribute('src', weatherIcons.clouds);
+                        weatherIcon.setAttribute("src", weatherIcons.clouds);
                         break;
                     case "Rain":
-                        weatherIcon.setAttribute('src', weatherIcons.rain);
+                        weatherIcon.setAttribute("src", weatherIcons.rain);
                         break;
                     case "Drizzle":
-                        weatherIcon.setAttribute('src', weatherIcons.drizzle);
+                        weatherIcon.setAttribute("src", weatherIcons.drizzle);
                         break;
                     case "Extreme":
-                        weatherIcon.setAttribute('src', weatherIcons.extreme);
+                        weatherIcon.setAttribute("src", weatherIcons.extreme);
                         break;
                     default:
-                        weatherIcon.setAttribute('src', weatherIcons.clear);
+                        weatherIcon.setAttribute("src", weatherIcons.clear);
                 }
             }
-            airportData.airport[where].temp = +(actWeatherData.main.temp).toFixed(1);
+            airportData.airport[where].temp = +actWeatherData.main.temp.toFixed(1);
             airportData.airport[where].weatherDesc = actWeatherData.weather[0].description;
             airportData.airport[where].weather = actWeatherData.weather[0].main;
-            airportData.airport[where].wind = (+actWeatherData.wind.speed * 3.6);
-            
+            airportData.airport[where].wind = +actWeatherData.wind.speed * 3.6;
         })
         .catch((err) => console.log(err));
 }
 
-Object.keys(airportData.airport).forEach(e => actWeatherDest(e));
-
-
+Object.keys(airportData.airport).forEach((e) => actWeatherDest(e));
 
 // ===Modal===
 const openEls = document.querySelectorAll("[data-open]");
@@ -232,14 +268,22 @@ const acceptDepart = document.getElementById("set-depart");
 // const resultDest2 = document.getElementById("btn-label-dest");
 const resultDestClass = document.getElementsByClassName("result-dest");
 const resultDepartClass = document.getElementsByClassName("result-depart");
-const linkDestSite = document.getElementById('linkDestSite');
-const linkDestInfo = document.getElementById('linkDestInfo');
-const linkDepartSite = document.getElementById('linkDepartSite');
-const linkDepartInfo = document.getElementById('linkDepartInfo');
-const footerLinksDest = document.getElementsByClassName('footerLinksDest');
+const linkDestSite = document.getElementById("linkDestSite");
+const linkDestInfo = document.getElementById("linkDestInfo");
+const linkDepartSite = document.getElementById("linkDepartSite");
+const linkDepartInfo = document.getElementById("linkDepartInfo");
+const footerLinksDest = document.getElementsByClassName("footerLinksDest");
 // const footerLinksDepart = document.getElementsByClassName('footerLinksDepart');
-const footerLinksDepart = document.querySelectorAll('.footerLinksDepart');
+const footerLinksDepart = document.querySelectorAll(".footerLinksDepart");
+const departureDate = document.getElementById("select-depart-date");
+const arrivalDate = document.getElementById("select-arrival-date");
+const acceptDepartDateBtn = document.getElementById("set-depart-date");
+const acceptArrivalDateBtn = document.getElementById("set-arrival-date");
 
+departureDate.setAttribute("min", calCurrentDate);
+arrivalDate.setAttribute("min", calTomorrow);
+// departureDate.setAttribute("value", calCurrentDate);
+console.log(departureDate.value);
 
 class Where {
     constructor(dest) {
@@ -277,17 +321,15 @@ acceptDest.addEventListener(
             // resultDest2.textContent = tempDest.Write();
             resultDestClass[0].textContent = tempDest.Write();
             resultDestClass[1].textContent = tempDest.Write();
-            
         }
-        console.log("Dane do setLink dest ", tempDest.Write());
+        // console.log("Dane do setLink dest ", tempDest.Write());
         setLink(tempDest.Write());
-        console.log(footerLinksDest);
-        [...footerLinksDest].forEach((e)=> e.classList.add('show'));
-        return zapiszData(tempDest.Write(),"destination");
+        // console.log(footerLinksDest);
+        [...footerLinksDest].forEach((e) => e.classList.add("show"));
+        return zapiszData(tempDest.Write(), "destination");
     },
     false
 );
-
 
 acceptDepart.addEventListener(
     "click",
@@ -306,13 +348,12 @@ acceptDepart.addEventListener(
             // resultDepart2.textContent = tempDepart.Write();
             resultDepartClass[0].textContent = tempDepart.Write();
             resultDepartClass[1].textContent = tempDepart.Write();
-
         }
         console.log("Dane do setLink depart ", tempDepart.Write());
         setLink(tempDepart.Write());
-        console.log(footerLinksDepart);
+        // console.log(footerLinksDepart);
         // footerLinks.forEach((e) => e.classList.toggle('show'));
-        [...footerLinksDepart].forEach((e)=> e.classList.add('show'));
+        [...footerLinksDepart].forEach((e) => e.classList.add("show"));
         return zapiszData(tempDepart.Write(), "departure");
     },
     false
@@ -320,38 +361,65 @@ acceptDepart.addEventListener(
 
 const zapiszData = (data, where) => {
     airportData[where] = data;
-    
+
     // console.log("Sprawdzenie odczyt: ", airportData.where, airportData);
     // console.log("co jest w select Dest:", selectDest.value);
     // console.log("co jest w selectDepart:", selectDepart.value);
     console.log("airportData", airportData);
-    
+    departureDate.setAttribute("min", calTomorrow);
+    console.log(departureDate.value);
+    console.log(arrivalDate.value);
 };
 
 function setLink(data) {
-    console.log("data z setLink:" , data);
+    console.log("data z setLink:", data);
     switch (data) {
         case "Wrocław":
-            linkDepartSite.setAttribute('href', airportData.airport.wroclaw.homepage );
-            linkDepartInfo.setAttribute('href', airportData.airport.wroclaw.infopage );
-        break;
+            linkDepartSite.setAttribute("href", airportData.airport.wroclaw.homepage);
+            linkDepartInfo.setAttribute("href", airportData.airport.wroclaw.infopage);
+            break;
         case "Londyn":
-            linkDestSite.setAttribute('href', airportData.airport.london.homepage );
-            linkDestInfo.setAttribute('href', airportData.airport.london.infopage );
-        break;
+            linkDestSite.setAttribute("href", airportData.airport.london.homepage);
+            linkDestInfo.setAttribute("href", airportData.airport.london.infopage);
+            break;
         case "Poznań":
-            linkDestSite.setAttribute('href', airportData.airport.poznan.homepage );
-            linkDestInfo.setAttribute('href', airportData.airport.poznan.infopage );
-        break;
+            linkDestSite.setAttribute("href", airportData.airport.poznan.homepage);
+            linkDestInfo.setAttribute("href", airportData.airport.poznan.infopage);
+            break;
         case "Nowy York":
-            linkDestSite.setAttribute('href', airportData.airport.newyork.homepage );
-            linkDestInfo.setAttribute('href', airportData.airport.newyork.infopage );
-        break;
+            linkDestSite.setAttribute("href", airportData.airport.newyork.homepage);
+            linkDestInfo.setAttribute("href", airportData.airport.newyork.infopage);
+            break;
     }
 }
 
-// console.log(baza);
+acceptArrivalDateBtn.addEventListener(
+    "click",
+    function () {
+        console.log("Data Arrival accepted", arrivalDate.value);
+        // airportData = Object.assign(airportData, {"trip": { "arrivaldate": arrivalDate.value}}); //czyścoi obiekt
+        airportData.trip.arrivaldate = arrivalDate.value ;
+        // airportData.trip.arrivaldate = arrivalDate.value;
+    },
+    false
+);
+acceptDepartDateBtn.addEventListener(
+    "click",
+    function () {
+        console.log("Data Deparure accepted", departureDate.value);
+        airportData.trip.departuredate = departureDate.value ;
+    },
+    false
+);
 
+// Validacja danych
+
+
+// departureDate.addEventListener("change", () => {
+//         console.log("na wydarzenia zmiany", departureDate.value);
+//     },false);
+
+// console.log(baza);
 
 // console.log(baza);
 // userData.destination = tempDest.Write();

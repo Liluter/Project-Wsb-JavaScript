@@ -25,6 +25,7 @@ body {
     height: 100vh;
     background: url(../assets/images/clouds_1920.jpg) top center;
     background-repeat: no-repeat;
+    background-size: cover;
     /*min-width: 320px;*/
     /* background-size: cover;*/
 }
@@ -163,7 +164,7 @@ li .location-weather {
     gap: 18px;
     max-width: 100%;
     min-height: 200px;
-    background: #e5e5e5;
+    background: rgba(229, 229, 229,0.3);
     border-radius: 10px;
     margin: 0px 58px 40px 8px;
     padding: 26px;
@@ -375,13 +376,20 @@ li .avatar {
     background-color: #2B518B;
 }
 
-
+#select-arrival-date, #select-depart-date {
+    width: 184px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1px solid #2B518B;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
 
 
 
 @media  (max-width: 900px) {
     body {
-        height: auto;
+        min-height:100vh;
     }
     .navbar {
         width: auto;
@@ -430,7 +438,6 @@ li .avatar {
     }
     .container {
         grid-template-columns: 1fr;
-        grid-template-rows: 110px auto auto auto;
         margin-bottom: 0px;
         min-width: 320px;
     }
@@ -521,6 +528,7 @@ li .avatar {
         width: 100%;
     }
     .container {
+        height: auto;
         grid-template-columns: 1fr;
         grid-template-rows: 110px auto auto auto;
         margin-bottom: 0px;

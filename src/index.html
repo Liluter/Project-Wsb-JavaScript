@@ -44,8 +44,8 @@
                                     <!-- <div id="show-depart">Wrocław</div> -->
                                 </section>
                                 <footer class="modal-footer">
-                                    <a id="linkDepartSite" class="footerLinksDepart" href="#"><p>Strona Lotniska link</p> </a>
-                                    <a id="linkDepartInfo" class="footerLinksDepart" href="#"><p>More info</p></a>
+                                    <a id="linkDepartSite" class="footerLinksDepart" href="#"><p>www.</p> </a>
+                                    <a id="linkDepartInfo" class="footerLinksDepart" href="#"><p>Pogoda</p></a>
                                 </footer>
                             </div>
                         </div>
@@ -73,8 +73,8 @@
                                 </section>
 
                                 <footer class="modal-footer">
-                                    <a id="linkDestSite" class="footerLinksDest" href="#"><p>Strona Lotniska</p></a>
-                                    <a id="linkDestInfo" class="footerLinksDest" href="#"><p>More info</p></a>
+                                    <a id="linkDestSite" class="footerLinksDest" href="#"><p>www.</p></a>
+                                    <a id="linkDestInfo" class="footerLinksDest" href="#"><p>Pogoda</p></a>
                                 </footer>
                             </div>
                         </div>
@@ -83,15 +83,55 @@
                     </div>
 
                     <div class="row two">
-                        <div class="btn date departure">
-                            <img src="./assets/images/calendar-days-solid.svg" alt="" />
-                            <p>16.04.2022</p>
+                        <button class="btn date departure open-modal" data-open="modal3">
+                            <img src="./assets/images/calendar-days-solid.svg" alt="departure date" />
+                            <p class="date-label-depart" id="btn-date-label-depart">Data wylotu</p>
+                        </button>
+
+                        <div class="modal" id="modal3" data-animation="slideInOutLeft">
+                            <div class="modal-dialog">
+                                <header class="modal-header">
+                                    <p>Wybierz datę wylotu</p> 
+                                    <button class="close-modal" aria-label="close modal" data-close>✕</button>
+                                </header>
+                                <section class="modal-content">
+                                    <input type="date" id="select-depart-date" name="departure">
+                                    <button class="btn-save" id="set-depart-date">Wybierz</button>
+                                </section>
+
+                                <footer class="modal-footer">
+                                    
+                                </footer>
+                            </div>
                         </div>
 
-                        <div class="btn date arrival">
-                            <img src="./assets/images/calendar-days-solid.svg" alt="" />
-                            <p>24.04.2022</p>
+
+
+
+
+                        <button class="btn date arrival open-modal" data-open="modal4">
+                            <img src="./assets/images/calendar-days-solid.svg" alt="arrival date" />
+                            <p>Data powrotu</p>
+                        </button>
+                        
+                        <div class="modal" id="modal4" data-animation="slideInOutLeft">
+                            <div class="modal-dialog">
+                                <header class="modal-header">
+                                    <p>Wybierz datę powrotu</p> 
+                                    <button class="close-modal" aria-label="close modal" data-close>✕</button>
+                                </header>
+                                <section class="modal-content">
+                                    <input type="date" id="select-arrival-date" name="arrival">
+                                    <button class="btn-save" id="set-arrival-date">Wybierz</button>
+                                </section>
+
+                                <footer class="modal-footer">
+                            
+                                </footer>
+                            </div>
                         </div>
+
+
                     </div>
                     <div class="row three">
                         <div class="btn passangers">
