@@ -122,6 +122,12 @@ button.close-modal:hover{
     grid-row: 2 / 3;
 }
 
+#modal7{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+
 .modal {
     position: relative;
     /* top: 10px;
@@ -321,8 +327,14 @@ button.close-modal:hover{
     grid-row: 1 / 2;
 }
 
+.btn.price{
+    display: flex;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
 
-#btnAirplane.hide, .btn.baggage.hide, .btn.place.hide, #b737.hide , #b737.hideStronger{
+
+#btnAirplane.hide, .btn.baggage.hide, .btn.place.hide, #b737.hide , #b737.hideStronger, .btn.price.hide{
     display:none;
 }
 
@@ -333,6 +345,15 @@ button.close-modal:hover{
     width:min-content;
 }
 
+.btn.curr {
+    width:50px;
+    height: 50px;
+    border: 3px solid  ;
+    border-radius: 50% 50%;
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+}
 
 .show {
     visibility:visible; 

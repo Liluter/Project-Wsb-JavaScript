@@ -192,12 +192,12 @@
 
                 </article>
                 <article class="row four">
-                    <div class="btn baggage hide" id="btnBaggage">
+                    <button class="btn baggage hide " id="btnBaggage">
                         <img src="./assets/images/Siutcase-rolling-solid.svg" alt="" />
                         <input id="bigBagNum" type="number" value="0" class="numPass" min="0"></input>
                         <img src="./assets/images/bag.svg" alt="" />
                         <input id="smallBagNum" type="number" value="0" class="numPass" min="0"></input>
-                    </div>
+                    </button>
                     <div class="btn place hide" id="btnPlace" data-open="modal6">
                         <p>Wybór miejsc</p>
                     </div>
@@ -228,6 +228,31 @@
                             </footer>
                         </div>
                     </section>
+                </article>
+                <article class="row five">
+
+                    <div class="btn price hide open-modal" id="btnPrice" data-open="modal7">
+                        <p>Cena : <span calss="result-price">1000</span><span class="result-curr">zł</span></p>
+                    </div>
+                    <section class="modal" id="modal7" data-animation="slideInOutLeft">
+                        <div class="modal-dialog">
+                            <header class="modal-header">
+                                <p>Wybierz walutę</p>
+                                <button class="close-modal" aria-label="close modal" data-close>✕</button>
+                            </header>
+                            <article class="modal-content">
+        
+                                <button class=" btn curr" id="euro">€</button>
+                                <button class=" btn curr" id="dolars">$</button>
+                                <button class=" btn curr" id="pln">PLN</button>
+                            </article>
+
+                            <footer class="modal-footer">
+
+                            </footer>
+                        </div>
+                    </section>
+                </article>
             </section>
         </main>
         <aside class="aside">

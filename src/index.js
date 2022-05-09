@@ -131,9 +131,9 @@ let airportData = {
         "small": "Embraer 175",
         "big": "Boeing 737-800",
         "biggest": "Boeing 787-10",
-        "175": "https://www.lot.com/content/dam/lot/lot-com/other-images/flota/embraer-175/LOT_Embraer175_fot_Jacek_Bonczek_bluesky_1.coreimg.82.1200.jpg/1631525569254/LOT_Embraer175_fot_Jacek_Bonczek_bluesky_1.jpg",
-        "737": "https://www.lot.com/content/dam/lot/lot-com/other-images/flota/boeing-737-800/Boeing_737_800_fot_Jacek_Bonczek.coreimg.82.1200.jpg/1630659561913/Boeing_737_800_fot_Jacek_Bonczek.jpg",
-        "787": "https://www.lot.com/content/dam/lot/lot-com/other-images/flota/boeing-787/Boeing-787-8-rev2-Jacek-Bonczek.coreimg.82.1200.jpg/1643107593684/Boeing-787-8-rev2-Jacek-Bonczek.jpg",
+        "175": "./assets/images/LOT_Embraer175.jpg",
+        "737": "./assets/images/Boeing_737_800.jpg",
+        "787": "./assets/images/Boeing-787-8-rev2.jpg",
     },
     "destination": "",
     "departure": "",
@@ -343,8 +343,8 @@ const avatar = document.querySelector(".avatar");
 const loginModal = document.getElementById("modal5");
 const loginModalBtn = document.getElementById("loginModalBtn");
 const resultAirplane = document.querySelectorAll(".result-airplane");
-const baggageBtn = document.getElementById("btnBaggage");
 // baggage section
+const baggageBtn = document.getElementById("btnBaggage");
 const bigBagNum = document.getElementById("bigBagNum");
 const smallBagNum = document.getElementById("smallBagNum");
 const resultBigBag = document.getElementById("result-big-bag");
@@ -357,6 +357,7 @@ const btnPlace = document.getElementById("btnPlace");
 const boing737 = document.getElementById('b737');
 const resultSeats = document.querySelector('.result-seats');
 const setPlace = document.getElementById('set-place');
+const btnPrice = document.getElementById('btnPrice');
 
 // console.log(departureDate.value);
 
@@ -613,6 +614,7 @@ function Login(name) {
     btnAirplane.classList.remove("hide");
     baggageBtn.classList.remove("hide");
     btnPlace.classList.remove("hide");
+    btnPrice.classList.remove("hide");
     
 }
 
@@ -646,9 +648,10 @@ function chooseSeat() {
         e.addEventListener(
             "click",
             function (e) {
+                
                 let parent = e.target.parentElement
                 let seat1 = e.target.parentElement.parentElement.classList;
-                console.log(seat1.value);
+                // console.log(seat1.value);
                 if (!parent.classList.contains('selected')) {
                     parent.classList.toggle('selected');
                     Seats.push(seat1.value);
@@ -656,13 +659,19 @@ function chooseSeat() {
                     Seats.splice(Seats.indexOf(seat1.value),1);
                     parent.classList.remove('selected');
                 }
-                console.log(parent.classList.contains('selected'))
+
+                if (Seats.length > airportData.passengers) {
+                    console.log("liczba zarez. miejsc <= passa" , Seats.length);
+                    Seats.splice(Seats.indexOf(seat1.value),1);
+                    parent.classList.remove('selected');
+                }
+                // console.log(parent.classList.contains('selected'))
                 // console.log(parent.classList);
                 e.target.parentElement.parentElement.classList[0];
-                console.log(Seats);
+                // console.log(Seats);
                 airportData.trip.seatsreservd = Seats;
                 let lista = Seats.join(', ');
-                console.log(lista);
+                // console.log(lista);
                 resultSeats.textContent = lista;
             },
             false
