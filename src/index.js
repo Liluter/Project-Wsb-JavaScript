@@ -94,13 +94,49 @@ let airportData = {
     "trip": {
         "departuredate": "",
         "arrivaldate": "",
+        "length": 0,
+        "ways": "",
+        "baggage": {
+            "big": 0,
+            "small": 0,
+        },
+        "seatsreservd": []
     },
+    "passengers": 1,
+    "users": [
+        {
+            "id": 0,
+            "name": "Karol",
+            "email": "karolawdziewicz@gmail.com",
+            "password": "bestcode",
+            "avatar": "./assets/images/avatarKarol.svg",
+        },
+        {
+            "id": 1,
+            "name": "Piotrek",
+            "email": "peter@gmail.com",
+            "password": "simplecode",
+            "avatar": "./assets/images/AvatarPiotrek.svg",
+        },
+        {
+            "id": 2,
+            "name": "Mulan",
+            "email": "donkey@gmail.com",
+            "password": "abrakadabra",
+            "avatar": "./assets/images/AvatarMulan.svg",
+        },
+    ],
+    "loggedin": "",
     "airplanes": {
-        "small": "",
-        "bid": "",
-        "biggest": ""
+        "small": "Embraer 175",
+        "big": "Boeing 737-800",
+        "biggest": "Boeing 787-10",
+        "175": "https://www.lot.com/content/dam/lot/lot-com/other-images/flota/embraer-175/LOT_Embraer175_fot_Jacek_Bonczek_bluesky_1.coreimg.82.1200.jpg/1631525569254/LOT_Embraer175_fot_Jacek_Bonczek_bluesky_1.jpg",
+        "737": "https://www.lot.com/content/dam/lot/lot-com/other-images/flota/boeing-737-800/Boeing_737_800_fot_Jacek_Bonczek.coreimg.82.1200.jpg/1630659561913/Boeing_737_800_fot_Jacek_Bonczek.jpg",
+        "787": "https://www.lot.com/content/dam/lot/lot-com/other-images/flota/boeing-787/Boeing-787-8-rev2-Jacek-Bonczek.coreimg.82.1200.jpg/1643107593684/Boeing-787-8-rev2-Jacek-Bonczek.jpg",
     },
-    "passangers" : 0
+    "destination": "",
+    "departure": "",
 };
 
 const ticketData = {};
@@ -108,10 +144,12 @@ const ticketData = {};
 const weatherIcons = {
     "clear": "./assets/images/Sunny2.svg",
     "rain": "./assets/images/Rain.svg",
-    "clouds": "./assets/images/Clouds.svg",
-    "drizzle": "./assets/images/SunCloud2.svg",
+    "clouds": "./assets/images/SunCloud2.svg",
+    "drizzle": "./assets/images/Clouds.svg",
     "extreme": "./assets/images/Windy.svg",
 };
+
+//"clouds": "./assets/images/Clouds.svg",
 
 // fetch("http://api.openweathermap.org/data/2.5/weather?lat=51.11&lon=17.02&appid=e88cbba2770d843c73cbfc59c2d7a3b0")
 //   .then(response => response.json())
@@ -163,8 +201,13 @@ function actWeatherDest(where) {
             // console.log(actWeatherData);
             // console.log(Object.keys(airportData.airport));
             // console.log(where, airportData.airport[where].lat, airportData.airport[where].long);
+            airportData.airport[where].temp = +actWeatherData.main.temp.toFixed(1);
+            airportData.airport[where].weatherDesc = actWeatherData.weather[0].description;
+            airportData.airport[where].weather = actWeatherData.weather[0].main;
+            airportData.airport[where].wind = +actWeatherData.wind.speed * 3.6;
+            // console.log(where, airportData.airport[where].lat, airportData.airport[where].long, airportData.airport[where].weather);
             if (where == "wroclaw") {
-                navWeatherStatus.textContent = `${currentTime} | ${actWeatherData.name} | ${actWeatherData.weather[0].description} | ${actWeatherData.main.temp.toFixed(1)} ℃ | ${
+                navWeatherStatus.textContent = `${calCurrentDate} | ${currentTime} | ${actWeatherData.name} | ${actWeatherData.weather[0].description} | ${actWeatherData.main.temp.toFixed(1)} ℃ | ${
                     actWeatherData.wind.speed
                 } km/h`;
                 switch (airportData.airport[where].weather) {
@@ -187,10 +230,6 @@ function actWeatherDest(where) {
                         weatherIcon.setAttribute("src", weatherIcons.clear);
                 }
             }
-            airportData.airport[where].temp = +actWeatherData.main.temp.toFixed(1);
-            airportData.airport[where].weatherDesc = actWeatherData.weather[0].description;
-            airportData.airport[where].weather = actWeatherData.weather[0].main;
-            airportData.airport[where].wind = +actWeatherData.wind.speed * 3.6;
         })
         .catch((err) => console.log(err));
 }
@@ -275,15 +314,54 @@ const linkDepartInfo = document.getElementById("linkDepartInfo");
 const footerLinksDest = document.getElementsByClassName("footerLinksDest");
 // const footerLinksDepart = document.getElementsByClassName('footerLinksDepart');
 const footerLinksDepart = document.querySelectorAll(".footerLinksDepart");
+// Date section
 const departureDate = document.getElementById("select-depart-date");
 const arrivalDate = document.getElementById("select-arrival-date");
 const acceptDepartDateBtn = document.getElementById("set-depart-date");
 const acceptArrivalDateBtn = document.getElementById("set-arrival-date");
+const infoDepartDate = document.getElementById("info-departure-date");
+const infoArrivalDate = document.getElementById("info-arrival-date");
+const resultDepartDate = document.querySelectorAll(".result-depart-date");
+const resultArrivalDate = document.querySelectorAll(".result-arrival-date");
+const resultTripLength = document.querySelectorAll(".result-trip-length");
+// passenger section
+const passNum = document.getElementById("passNum");
+const decPassNr = document.getElementById("decPassNr");
+const incPassNr = document.getElementById("incPassNr");
+const resultPassNum = document.querySelector(".result-pass-num");
+//login
+const loginName = document.getElementById("login-name");
+const loginEmail = document.getElementById("login-email");
+const loginPass = document.getElementById("login-pass");
+const loginBtn = document.getElementById("login-btn");
+const loginInfoName = document.getElementById("info-login-name");
+const loginInfoEmail = document.getElementById("info-login-email");
+const loginInfoPass = document.getElementById("info-login-pass");
+const resultLogin = document.querySelector(".result-login");
+const avatar = document.querySelector(".avatar");
+//przjscie do widoku szczegółów
+const loginModal = document.getElementById("modal5");
+const loginModalBtn = document.getElementById("loginModalBtn");
+const resultAirplane = document.querySelectorAll(".result-airplane");
+const baggageBtn = document.getElementById("btnBaggage");
+// baggage section
+const bigBagNum = document.getElementById("bigBagNum");
+const smallBagNum = document.getElementById("smallBagNum");
+const resultBigBag = document.getElementById("result-big-bag");
+const resultSmallBag = document.getElementById("result-small-bag");
+
+// aside section
+const planeImg = document.getElementById("showPlane");
+const btnAirplane = document.getElementById("btnAirplane");
+const btnPlace = document.getElementById("btnPlace");
+const boing737 = document.getElementById('b737');
+const resultSeats = document.querySelector('.result-seats');
+const setPlace = document.getElementById('set-place');
+
+// console.log(departureDate.value);
 
 departureDate.setAttribute("min", calCurrentDate);
-arrivalDate.setAttribute("min", calTomorrow);
-// departureDate.setAttribute("value", calCurrentDate);
-console.log(departureDate.value);
+arrivalDate.setAttribute("min", calCurrentDate);
 
 class Where {
     constructor(dest) {
@@ -322,7 +400,7 @@ acceptDest.addEventListener(
             resultDestClass[0].textContent = tempDest.Write();
             resultDestClass[1].textContent = tempDest.Write();
         }
-        // console.log("Dane do setLink dest ", tempDest.Write());
+        console.log("Dane do setLink dest ", tempDest.Write());
         setLink(tempDest.Write());
         // console.log(footerLinksDest);
         [...footerLinksDest].forEach((e) => e.classList.add("show"));
@@ -362,17 +440,18 @@ acceptDepart.addEventListener(
 const zapiszData = (data, where) => {
     airportData[where] = data;
 
-    // console.log("Sprawdzenie odczyt: ", airportData.where, airportData);
+    console.log("Sprawdzenie odczyt: ", airportData.where, airportData);
     // console.log("co jest w select Dest:", selectDest.value);
     // console.log("co jest w selectDepart:", selectDepart.value);
-    console.log("airportData", airportData);
+    // console.log("airportData dest", airportData);
     departureDate.setAttribute("min", calTomorrow);
-    console.log(departureDate.value);
-    console.log(arrivalDate.value);
+    // console.log(departureDate.value);
+    // console.log(arrivalDate.value);
+    console.log(airportData.destination);
 };
 
 function setLink(data) {
-    console.log("data z setLink:", data);
+    // console.log("data z setLink:", data);
     switch (data) {
         case "Wrocław":
             linkDepartSite.setAttribute("href", airportData.airport.wroclaw.homepage);
@@ -381,39 +460,239 @@ function setLink(data) {
         case "Londyn":
             linkDestSite.setAttribute("href", airportData.airport.london.homepage);
             linkDestInfo.setAttribute("href", airportData.airport.london.infopage);
+            resultAirplane.forEach((e) => (e.textContent = airportData.airplanes.big));
+            planeImg.setAttribute("src", airportData.airplanes[737]);
+            boing737.classList.remove('hideStronger');
             break;
         case "Poznań":
             linkDestSite.setAttribute("href", airportData.airport.poznan.homepage);
             linkDestInfo.setAttribute("href", airportData.airport.poznan.infopage);
+            resultAirplane.forEach((e) => (e.textContent = airportData.airplanes.small));
+            planeImg.setAttribute("src", airportData.airplanes[175]);
             break;
         case "Nowy York":
             linkDestSite.setAttribute("href", airportData.airport.newyork.homepage);
             linkDestInfo.setAttribute("href", airportData.airport.newyork.infopage);
+            resultAirplane.forEach((e) => (e.textContent = airportData.airplanes.biggest));
+            planeImg.setAttribute("src", airportData.airplanes[787]);
             break;
+        default:
+            resultAirplane[0].textContent = "Brak danych";
     }
 }
 
 acceptArrivalDateBtn.addEventListener(
     "click",
     function () {
-        console.log("Data Arrival accepted", arrivalDate.value);
-        // airportData = Object.assign(airportData, {"trip": { "arrivaldate": arrivalDate.value}}); //czyścoi obiekt
-        airportData.trip.arrivaldate = arrivalDate.value ;
-        // airportData.trip.arrivaldate = arrivalDate.value;
+        if (arrivalDate.value == "") {
+            infoArrivalDate.classList.add("showinfo");
+        } else {
+            console.log("Data Arrival accepted", arrivalDate.value);
+            airportData.trip.arrivaldate = arrivalDate.value;
+            infoArrivalDate.classList.remove("showinfo");
+            resultArrivalDate[0].textContent = airportData.trip.arrivaldate;
+        }
+        if (airportData.trip.arrivaldate != "" && airportData.trip.departuredate != "") {
+            console.log(" wybrano dwie daty");
+
+            tripLength(airportData.trip.departuredate, airportData.trip.arrivaldate);
+            resultTripLength[0].textContent = airportData.trip.length;
+            // airportData.trip.length = airportData.trip.departuredate - airportData.trip.arrivaldate
+        }
     },
     false
 );
 acceptDepartDateBtn.addEventListener(
     "click",
     function () {
-        console.log("Data Deparure accepted", departureDate.value);
-        airportData.trip.departuredate = departureDate.value ;
+        if (departureDate.value == "") {
+            infoDepartDate.classList.add("showinfo");
+        } else {
+            console.log("Data Deparure accepted", departureDate.value);
+            airportData.trip.departuredate = departureDate.value;
+            infoDepartDate.classList.remove("showinfo");
+            arrivalDate.setAttribute("min", departureDate.value); // ograniczenie powrotu o wylot
+            resultDepartDate[0].textContent = airportData.trip.departuredate;
+        }
+
+        if (airportData.trip.arrivaldate != "" && airportData.trip.departuredate != "") {
+            console.log(" wybrano dwie daty");
+            tripLength(airportData.trip.departuredate, airportData.trip.arrivaldate);
+        }
     },
     false
 );
 
-// Validacja danych
+function tripLength(start, end) {
+    let tripEnd = new Date(Date.parse(end));
+    let tripStart = new Date(Date.parse(start));
+    let tripLength = tripEnd.getDate() - tripStart.getDate();
+    console.log(tripLength, "zapisuje do bazy długość podróży");
+    return (airportData.trip.length = tripLength);
+}
 
+decPassNr.addEventListener(
+    "click",
+    function () {
+        // console.log("ujmij passengerow")
+        passNum.value--;
+        if (passNum.value < 1) {
+            passNum.value = 1;
+        }
+        airportData.passengers = passNum.value;
+        resultPassNum.textContent = airportData.passengers;
+        // resultPassNum.textContent = passNum.value.toString();
+        // console.log(passNum.value, airportData.passengers)
+    },
+    false
+);
+// arrEmail
+incPassNr.addEventListener(
+    "click",
+    function () {
+        // console.log("dodaj passengerow")
+        passNum.value++;
+        airportData.passengers = passNum.value;
+        resultPassNum.textContent = airportData.passengers;
+        // console.log(resultPassNum.textContent);
+        // console.log(passNum.value , airportData.passengers)
+    },
+    false
+);
+
+loginBtn.addEventListener("click", CheckPass);
+
+function CheckPass() {
+    let arrName = airportData.users.map((e) => e.name);
+    let arrEmail = airportData.users.map((e) => e.email);
+    let arrPass = airportData.users.map((e) => e.password);
+
+    // console.log(loginName.value)
+    // console.log(loginEmail.value)
+    // console.log(loginPass.value)
+    // console.log(arrName.some(name => name == loginName.value));
+
+    if (arrName.some((name) => name == loginName.value) !== true) {
+        // console.log('nie ma cie w bazie ');
+        loginInfoName.classList.add("showinfo");
+    } else {
+        loginInfoName.classList.remove("showinfo");
+
+        if ((airportData.users.find((user) => user.name == loginName.value).email == loginEmail.value) !== true) {
+            console.log("zły email ", airportData.users.find((user) => user.name == loginName.value).email);
+
+            loginInfoEmail.classList.add("showinfo");
+        } else {
+            loginInfoEmail.classList.remove("showinfo");
+            if ((airportData.users.find((user) => user.name == loginName.value).password == loginPass.value) !== true) {
+                console.log(
+                    "złe hasło ",
+                    airportData.users.find((user) => user.name == loginName.value)
+                );
+
+                loginInfoPass.classList.add("showinfo");
+            } else {
+                loginInfoPass.classList.remove("showinfo");
+                console.log("logged in... as ", loginName.value);
+                // funkcja szczegółów i awatara.
+                Login(loginName.value);
+            }
+        }
+    }
+}
+
+
+function Login(name) {
+    console.log("funkcja login", airportData.loggedin);
+    airportData.loggedin = name;
+    resultLogin.textContent = airportData.loggedin;
+    avatar.setAttribute("src", airportData.users.find((user) => user.name == name).avatar);
+    // przejście do trybu rozszerzonego bagaże i samolot itp
+    loginModal.classList.remove(isVisible);
+    loginModalBtn.classList.add("hide");
+    btnAirplane.classList.remove("hide");
+    baggageBtn.classList.remove("hide");
+    btnPlace.classList.remove("hide");
+    
+}
+
+bigBagNum.addEventListener(
+    "change",
+    () => {
+        airportData.trip.baggage.big = bigBagNum.value;
+        resultBigBag.textContent = airportData.trip.baggage.big;
+        console.log("bagaz duzy w bazie :", airportData.trip.baggage.big);
+    },
+    false
+);
+smallBagNum.addEventListener(
+    "change",
+    () => {
+        airportData.trip.baggage.small = smallBagNum.value;
+        resultSmallBag.textContent = airportData.trip.baggage.small;
+        console.log("bagaz mały w bazie :", airportData.trip.baggage.small);
+    },
+    false
+);
+
+let Seats = [];
+function chooseSeat() {
+    
+    const svgImg = document.getElementsByTagName("g");
+    let list = [...svgImg];
+    list = list.filter((e) => e.hasAttribute("class"));
+    // console.log(list);
+    list.forEach((e) =>
+        e.addEventListener(
+            "click",
+            function (e) {
+                let parent = e.target.parentElement
+                let seat1 = e.target.parentElement.parentElement.classList;
+                console.log(seat1.value);
+                if (!parent.classList.contains('selected')) {
+                    parent.classList.toggle('selected');
+                    Seats.push(seat1.value);
+                } else {
+                    Seats.splice(Seats.indexOf(seat1.value),1);
+                    parent.classList.remove('selected');
+                }
+                console.log(parent.classList.contains('selected'))
+                // console.log(parent.classList);
+                e.target.parentElement.parentElement.classList[0];
+                console.log(Seats);
+                airportData.trip.seatsreservd = Seats;
+                let lista = Seats.join(', ');
+                console.log(lista);
+                resultSeats.textContent = lista;
+            },
+            false
+        )
+    );
+}
+
+setPlace.addEventListener('click', function () {
+    boing737.classList.toggle('hide');
+    planeImg.classList.toggle('hide');
+})
+
+chooseSeat()
+
+
+
+console.log(Seats);
+
+// const loginName = document.getElementById('login-name');
+// const loginEmail = document.getElementById('login-email');
+// const loginPass = document.getElementById('login-pass');
+
+// airportData.passengers = passNum.value;
+// console.log(passNum.value, " wartość w passnum")
+
+// const resultDepartDate = document.querySelectorAll(".result-depart-date");
+// const resultArrivalDate = document.querySelectorAll(".result-arrival-date");
+// const resultTripLength = document.querySelectorAll(".result-trip-length");
+
+// Validacja danych
 
 // departureDate.addEventListener("change", () => {
 //         console.log("na wydarzenia zmiany", departureDate.value);

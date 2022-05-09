@@ -86,7 +86,41 @@ button.close-modal:hover{
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 }
+#modal5{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+#modal5 .modal-content {
+    flex-direction: column;
+}
+#modal5 .login {
+    margin:6px;
+    height:32px;
+    width: 80%;
+    background-color: #fff;
+    border: 1px solid #2b518b;
+    border-radius: 5px;
+    font-family: "DejaVu Sans Mono", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #2b518b;
+    padding-left: 11px;
+    
+}
+#modal5 .login:focus-visible {
+    border: 2px solid #2B518B;
+    outline: 0 solid ;
+}
 
+#modal6{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
 
 .modal {
     position: relative;
@@ -144,6 +178,9 @@ button.close-modal:hover{
 }
 
 
+.active {
+    display: block;
+}
 
 
 #select-dest, #select-depart {
@@ -232,9 +269,84 @@ button.close-modal:hover{
     visibility: hidden;
 }
 
+
+#info-arrival-date,#info-departure-date {
+    text-align: center;
+    padding-bottom:20px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight:400;
+    font-size: 16px;
+    color: #2b518b;
+    display: none;
+}
+
+.login-info{
+    text-align: center;
+    padding-bottom:8px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight:400;
+    font-size: 16px;
+    color: #a62312;
+    display: none;
+}
+#info-arrival-date.showinfo, #info-departure-date.showinfo, #info-login-name.showinfo,#info-login-email.showinfo, #info-login-pass.showinfo {
+    display: block;
+}
+
+
+#loginModalBtn.hide {
+    display:none;
+    
+    opacity: 1;
+}
+
+#btnAirplane {
+    display:flex;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+
+
+.btn.baggage{
+    display: flex;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.btn.place {
+    display: flex;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+
+#btnAirplane.hide, .btn.baggage.hide, .btn.place.hide, #b737.hide , #b737.hideStronger{
+    display:none;
+}
+
+#b737 {
+    display:block;
+    overflow-y: scroll;
+    height: 500px;
+    width:min-content;
+}
+
+
 .show {
     visibility:visible; 
 }
+
+.login {
+    margin: 12px;
+}
+
+div.svg{
+    overflow:auto;
+    justify-content: center;
+}
+
 
 [data-aprove] {
     color:rgb(211, 173, 19);

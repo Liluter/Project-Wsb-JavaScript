@@ -30,6 +30,15 @@ body {
     /* background-size: cover;*/
 }
 
+#colors g:hover{
+    fill: #0ee323;
+}
+
+g.selected {
+    fill: #1a9226
+}
+
+
 .container {
     width: calc(100% - 2 * var(--marg1));
     height: calc(100% - 2 * var(--marg1));
@@ -171,8 +180,9 @@ li .location-weather {
 }
 .aside-content {
     width: auto;
-    height: 100%;
+    
     background-color: rgba(56, 220, 231, 0.1);
+    overflow: hidden;
 }
 .row {
     display: grid;
@@ -264,7 +274,7 @@ li .location-weather {
 }
 
 .numPass {
-    width: 28px;
+    width: 50px;
     height: 28px;
     background-color: #e5e5e5;
     border: 1px solid #2b518b;
@@ -275,8 +285,10 @@ li .location-weather {
     font-size: 1em;
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: center;
     color: #2b518b;
+    padding-left:11px;
 }
 
 /* main content */
@@ -347,7 +359,7 @@ li .avatar {
     padding: 18px;
 }
 .main.content {
-    margin: 8px;
+    margin: 0 8px 8px 8px;
 }
 
 /*
@@ -371,25 +383,48 @@ li .avatar {
 }
 
 .template {
-    width: 300px;
-    height:300px;
+    width: 400px;
+    height:200px;
     background-color: #2B518B;
+    background-image: url("../assets/images/clouds_1920.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.template.hide {
+    display: none;
 }
 
 #select-arrival-date, #select-depart-date {
-    width: 184px;
+    width: min-content;
     height: 32px;
     background: #FFFFFF;
     border: 1px solid #2B518B;
     box-sizing: border-box;
     border-radius: 5px;
+    text-align: center;
+    padding-bottom:2px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight:500;
+    font-size: 16px;
+    color: #2b518b;
+    align-self: center;
+    
+    
 }
 
+#select-depart-date:focus-visible, #select-arrival-date:focus-visible {
+    border: 2px solid #2B518B;
+    outline: 0 solid ;
+}
 
 
 @media  (max-width: 900px) {
     body {
-        min-height:100vh;
+        min-height: 100vh;
+        height:auto;
     }
     .navbar {
         width: auto;
@@ -437,10 +472,14 @@ li .avatar {
         width: 100%;
     }
     .container {
+        height: auto;
+        min-height: 100vh;
         grid-template-columns: 1fr;
+        grid-template-rows: 110px min-content auto min-content;
         margin-bottom: 0px;
         min-width: 320px;
     }
+
 
     .main {
         margin-left: 0;
