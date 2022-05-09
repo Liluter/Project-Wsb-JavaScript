@@ -184,6 +184,8 @@ const navWeatherStatus = document.getElementById("location-weather");
 
 // actWeatherNav();
 
+// 16 days https://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
+
 const weatherIcon = document.getElementById("weatherIcon");
 
 // console.log(weatherIcon.getAttribute('src'));
@@ -194,7 +196,7 @@ weatherIcon.setAttribute("src", weatherIcons.clear);
 // wczytania api pogodowego i przypisanie icon nav bar na odpowiednią pogodę
 
 function actWeatherDest(where) {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${airportData.airport[where].lat}&lon=${airportData.airport[where].long}&appid=e88cbba2770d843c73cbfc59c2d7a3b0&lang=pl&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${airportData.airport[where].lat}&lon=${airportData.airport[where].long}&appid=e88cbba2770d843c73cbfc59c2d7a3b0&lang=pl&units=metric`)
         .then((response) => response.json())
         .then((data) => {
             actWeatherData = data;

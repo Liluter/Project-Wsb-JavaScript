@@ -51,11 +51,48 @@
     },
     "trip": {
         "departuredate": "",
-        "arrivaldate": ""
+        "arrivaldate": "",
+        "length": 0,
+        "ways": "",
+        "baggage": {
+            "big": 0,
+            "small": 0
+        },
+        "seatsreservd": []
     },
+    "passengers": 1,
+    "users": [
+        {
+            "id": 0,
+            "name": "Karol",
+            "email": "karolawdziewicz@gmail.com",
+            "password": "bestcode",
+            "avatar": "./assets/images/avatarKarol.svg"
+        },
+        {
+            "id": 1,
+            "name": "Piotrek",
+            "email": "peter@gmail.com",
+            "password": "simplecode",
+            "avatar": "./assets/images/AvatarPiotrek.svg"
+        },
+        {
+            "id": 2,
+            "name": "Mulan",
+            "email": "donkey@gmail.com",
+            "password": "abrakadabra",
+            "avatar": "./assets/images/AvatarMulan.svg"
+        }
+    ],
+    "loggedin": "",
     "airplanes": {
-        "small": "",
-        "bid": "",
-        "biggest": ""
-    }
+        "small": "Embraer 175",
+        "big": "Boeing 737-800",
+        "biggest": "Boeing 787-10",
+        "175": "./assets/images/LOT_Embraer175.jpg",
+        "737": "./assets/images/Boeing_737_800.jpg",
+        "787": "./assets/images/Boeing-787-8-rev2.jpg"
+    },
+    "destination": "",
+    "departure": ""
 }

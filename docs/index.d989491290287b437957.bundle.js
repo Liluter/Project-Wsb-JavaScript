@@ -635,7 +635,7 @@ module.exports = __webpack_require__.p + "assets/images/e2217daac308f645a44c.jpg
   \*************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"airport":{"wroclaw":{"name":"Port lotniczy Wrocław-Strachowice","lat":"51.109444","long":"16.880278","iata":"WRO","homepage":"https://airport.wroclaw.pl","infopage":"https://airportguide.com/airport/info/WRO","temp":15,"wind":0.5,"weatherDesc":"bezchmurnie","weather":"Clear"},"london":{"name":"Londyn Heathrow","lat":"51.4706","long":"-.461941","iata":"LHR","homepage":"https://www.heathrow.com","infopage":"https://airportguide.com/airport/info/LHR","temp":7,"wind":0.5,"weatherDesc":"bezchmurnie","weather":"Clear"},"poznan":{"name":"Port Lotniczy Poznań-Ławica im. Henryka Wieniawskiego","lat":"52.421001","long":"16.8263","iata":"POZ","homepage":"http://www.airport-poznan.com.pl/","infopage":"https://airportguide.com/airport/info/POZ","temp":7,"wind":0.5,"weatherDesc":"bezchmurnie","weather":"Clear"},"newyork":{"name":"Port lotniczy Johna F. Kenned\'ego","lat":"40.6329","long":"-73.7714","iata":"JFK","homepage":"https://www.jfkairport.com","infopage":"https://airportguide.com/airport/info/JFK","temp":7,"wind":0.5,"weatherDesc":"bezchmurnie","weather":"Clear"}},"trip":{"departuredate":"","arrivaldate":""},"airplanes":{"small":"","bid":"","biggest":""}}');
+module.exports = JSON.parse('{"airport":{"wroclaw":{"name":"Port lotniczy Wrocław-Strachowice","lat":"51.109444","long":"16.880278","iata":"WRO","homepage":"https://airport.wroclaw.pl","infopage":"https://airportguide.com/airport/info/WRO","temp":15,"wind":0.5,"weatherDesc":"bezchmurnie","weather":"Clear"},"london":{"name":"Londyn Heathrow","lat":"51.4706","long":"-.461941","iata":"LHR","homepage":"https://www.heathrow.com","infopage":"https://airportguide.com/airport/info/LHR","temp":7,"wind":0.5,"weatherDesc":"bezchmurnie","weather":"Clear"},"poznan":{"name":"Port Lotniczy Poznań-Ławica im. Henryka Wieniawskiego","lat":"52.421001","long":"16.8263","iata":"POZ","homepage":"http://www.airport-poznan.com.pl/","infopage":"https://airportguide.com/airport/info/POZ","temp":7,"wind":0.5,"weatherDesc":"bezchmurnie","weather":"Clear"},"newyork":{"name":"Port lotniczy Johna F. Kenned\'ego","lat":"40.6329","long":"-73.7714","iata":"JFK","homepage":"https://www.jfkairport.com","infopage":"https://airportguide.com/airport/info/JFK","temp":7,"wind":0.5,"weatherDesc":"bezchmurnie","weather":"Clear"}},"trip":{"departuredate":"","arrivaldate":"","length":0,"ways":"","baggage":{"big":0,"small":0},"seatsreservd":[]},"passengers":1,"users":[{"id":0,"name":"Karol","email":"karolawdziewicz@gmail.com","password":"bestcode","avatar":"./assets/images/avatarKarol.svg"},{"id":1,"name":"Piotrek","email":"peter@gmail.com","password":"simplecode","avatar":"./assets/images/AvatarPiotrek.svg"},{"id":2,"name":"Mulan","email":"donkey@gmail.com","password":"abrakadabra","avatar":"./assets/images/AvatarMulan.svg"}],"loggedin":"","airplanes":{"175":"./assets/images/LOT_Embraer175.jpg","737":"./assets/images/Boeing_737_800.jpg","787":"./assets/images/Boeing-787-8-rev2.jpg","small":"Embraer 175","big":"Boeing 737-800","biggest":"Boeing 787-10"},"destination":"","departure":""}');
 
 /***/ })
 
@@ -967,6 +967,7 @@ var navWeatherStatus = document.getElementById("location-weather"); // function 
 //         .catch((err) => console.log(err));
 // }
 // actWeatherNav();
+// 16 days https://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
 
 var weatherIcon = document.getElementById("weatherIcon"); // console.log(weatherIcon.getAttribute('src'));
 
@@ -975,7 +976,7 @@ weatherIcon.setAttribute("src", weatherIcons.clear); // console.log(weatherIcon.
 // wczytania api pogodowego i przypisanie icon nav bar na odpowiednią pogodę
 
 function actWeatherDest(where) {
-  fetch("http://api.openweathermap.org/data/2.5/weather?lat=".concat(airportData.airport[where].lat, "&lon=").concat(airportData.airport[where]["long"], "&appid=e88cbba2770d843c73cbfc59c2d7a3b0&lang=pl&units=metric")).then(function (response) {
+  fetch("https://api.openweathermap.org/data/2.5/weather?lat=".concat(airportData.airport[where].lat, "&lon=").concat(airportData.airport[where]["long"], "&appid=e88cbba2770d843c73cbfc59c2d7a3b0&lang=pl&units=metric")).then(function (response) {
     return response.json();
   }).then(function (data) {
     actWeatherData = data; // console.log(actWeatherData);
@@ -1507,4 +1508,4 @@ console.log(Seats); // const loginName = document.getElementById('login-name');
 
 /******/ })()
 ;
-//# sourceMappingURL=index.37ebbc4af3ac9aa0f7b4.bundle.js.map
+//# sourceMappingURL=index.d989491290287b437957.bundle.js.map
