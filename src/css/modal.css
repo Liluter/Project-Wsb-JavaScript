@@ -318,12 +318,14 @@ button.close-modal:hover{
 #b737.hideStronger,
 .btn.price.hide,
 #result-weather-dest.hide,
-#weatherIcon2.hide {
+#weatherIcon2.hide,
+#embraer.hide,
+#embraer.hideStronger {
     display:none;
 }
 
 
-#b737 {
+#b737, #embraer {
     display:block;
     overflow-y: scroll;
     height: 500px;

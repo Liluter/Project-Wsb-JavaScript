@@ -329,6 +329,7 @@ const planeImg = document.getElementById("showPlane");
 const btnAirplane = document.getElementById("btnAirplane");
 const btnPlace = document.getElementById("btnPlace");
 const boing737 = document.getElementById("b737");
+const embraer = document.getElementById("embraer");
 const resultSeats = document.querySelector(".result-seats");
 const setPlace = document.getElementById("set-place");
 // ticket calculation
@@ -420,6 +421,7 @@ function setLink(data) {
             linkDestInfo.setAttribute("href", airportData.airport.poznan.infopage);
             resultAirplane.forEach((e) => (e.textContent = airportData.airplanes.small));
             planeImg.setAttribute("src", airportData.airplanes[175]);
+            embraer.classList.remove("hideStronger");
             resultWeatherDest.textContent = `Aktualna pogoda dla lotniska: ${airportData.airport.poznan.name} | temp:  ${airportData.airport.poznan.temp} ℃ | ${airportData.airport.poznan.weatherDesc}   ${(airportData.airport.poznan.wind).toFixed(1)} km/h`;
             whichIcon(airportData.airport.poznan.weather, weatherIcon2);
             break;
@@ -428,6 +430,7 @@ function setLink(data) {
             linkDestInfo.setAttribute("href", airportData.airport.newyork.infopage);
             resultAirplane.forEach((e) => (e.textContent = airportData.airplanes.biggest));
             planeImg.setAttribute("src", airportData.airplanes[787]);
+            //svg 787
             resultWeatherDest.textContent = `Aktualna pogoda dla lotniska: ${airportData.airport.newyork.name} | temp:  ${airportData.airport.newyork.temp} ℃ | ${airportData.airport.newyork.weatherDesc}   ${(airportData.airport.newyork.wind).toFixed(1)} km/h`;
             whichIcon(airportData.airport.newyork.weather, weatherIcon2);
             break;
@@ -609,6 +612,7 @@ function chooseSeat() {
 
 setPlace.addEventListener("click", function () {
     boing737.classList.toggle("hide");
+    embraer.classList.toggle('hide');
     planeImg.classList.toggle("hide");
 });
 
