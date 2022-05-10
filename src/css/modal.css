@@ -12,22 +12,6 @@
     --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
 }
 
-/* * {
-    padding: 0;
-    margin: 0;
-} */
-
-/* .container {
-    width: 50vw;
-    height: 50vh;
-    background-color: rgb(56, 107, 165);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
-
-
 button {
     cursor: pointer;
     background: transparent;
@@ -46,17 +30,6 @@ button.close-modal {
 button.close-modal:hover{
     color: var(--hot);
 }
-/* rgb(165, 101, 56); */
-
-/* body {
-    background-color: rgb(112, 112, 112);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font: 16px/1.5 sans-serif;
-} */
 
 .btn-group {
     text-align: center;
@@ -130,10 +103,6 @@ button.close-modal:hover{
 
 .modal {
     position: relative;
-    /* top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px; */
     display: none;
     justify-content: center;
     align-items: flex-start;
@@ -159,9 +128,6 @@ button.close-modal:hover{
 }
 
 .modal-dialog {
-    /* position:relative;
-    top:11%; */
-    /* width: 80%; */
     border-radius: 5px;
     background: var(--white);
     overflow: auto;
@@ -169,10 +135,6 @@ button.close-modal:hover{
     margin:12px;
     width:90%;
 }
-
-/* .modal-dialog > * {
-    padding: 1rem;
-} */
 
 .modal-content {
     display: flex;
@@ -198,7 +160,6 @@ button.close-modal:hover{
     padding-right: 4px;
     width: 84px;
     height:32px;
-    /* dark green stroke1 */
     color: #20742D;
     font-family: 'Inter';
     font-style: normal;
@@ -215,7 +176,6 @@ button.close-modal:hover{
 
 .btn-save:hover {
     background: #0f68ee;
-    /* dark green stroke1 */
     border: 1px solid #e5e5e5;
     color: #e5e5e5;
 }
@@ -304,7 +264,6 @@ button.close-modal:hover{
 
 #loginModalBtn.hide {
     display:none;
-    
     opacity: 1;
 }
 
@@ -332,11 +291,37 @@ button.close-modal:hover{
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
+.btn.reserved{
+    background: #3f924d;
+    border: 1px solid #86e595;
+    border-radius: 5px;
+    display: flex;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    color: #fff;
+}
+.btn.reserved:hover{
+    border: 2px solid #10d531;
+    background: #20742D;
+    color: rgb(22, 235, 107);
+}
 
-
-#btnAirplane.hide, .btn.baggage.hide, .btn.place.hide, #b737.hide , #b737.hideStronger, .btn.price.hide{
+.btn.reserved.hide {
     display:none;
 }
+
+
+#btnAirplane.hide,
+.btn.baggage.hide,
+.btn.place.hide,
+#b737.hide,
+#b737.hideStronger,
+.btn.price.hide,
+#result-weather-dest.hide,
+#weatherIcon2.hide {
+    display:none;
+}
+
 
 #b737 {
     display:block;
@@ -377,7 +362,6 @@ div.svg{
 
 [data-animation="slideInOutLeft"] .modal-dialog {
     opacity: 0;
-    /* transform: scale(20%); */
     transform: scaleY(0);
     transform-origin: top center;
     transition: all .350s ease-in;

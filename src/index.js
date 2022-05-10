@@ -8,37 +8,9 @@ currentTime = currentTime.toLocaleTimeString();
 
 let currentDate = new Date(); //1
 let calCurrentDate = currentDate.toISOString().slice(0, 10);
-console.log(currentDate.getDate(), "currentDate getDate ");
-console.log(currentDate.toISOString().slice(0, 10), "currentDate odcięte pod kalendarz"); //2
-console.log(Date(currentDate.getTime()), "get time"); //daje milisekundy od początku // 3 to są milis
-
 let tommorow = new Date(currentDate.getTime() + day);
-console.log(tommorow.getDay(), "tommorow getdate"); // który jutro
-console.log(tommorow.getMonth(), "tommorow getdate"); // który jutro
-console.log(tommorow.getFullYear(), "tommorow getdate"); // który jutro
 let calTomorrow = tommorow.toISOString().slice(0, 10);
-console.log(calTomorrow, "jutro obcięte pod kalendarz");
-
 let inFiveDays = new Date(Date.parse("2022-05-12")); // za 5 dni z klendarza
-// console.log(inFiveDays.toISOString().slice(0,10),"inFiveDays odciete"); // za 5 dni odciete
-console.log(inFiveDays.getDate(), "inFiveDays "); // za 5 dni odciete jest 12
-console.log(inFiveDays.getDate() - currentDate.getDate(), "różnica dni między przyszłoscia a dzisiaj "); // za 5 dni odciete jest 12
-
-// let odczyt z arrivalDate i porównać z tommorow
-
-// let dzis = Date.parse('2022-05-07');
-// console.log(wczoraj, " wczoraj");
-// console.log(dzis, "dzisiaj");
-// console.log((dzis - wczoraj)/3600000," godziny");
-// console.log(calDate);
-
-// let parseDate = Date.parse(calDate);
-// console.log((parseDate-(wczoraj-(3600000*24)))/(3600000*24), "dni");
-
-// let tommorow = new Date(currentDate.getTime() + day);
-// console.log(tommorow.toISOString().slice(0,10),"jutro obcięte");
-
-// console.log(currentData.toLocaleDateString().split('.'));
 
 let airportData = {
     "airport": {
@@ -65,6 +37,7 @@ let airportData = {
             "wind": 0.5,
             "weatherDesc": "bezchmurnie",
             "weather": "Clear",
+            "baseprice": 1063.0,
         },
         "poznan": {
             "name": "Port Lotniczy Poznań-Ławica im. Henryka Wieniawskiego",
@@ -77,6 +50,7 @@ let airportData = {
             "wind": 0.5,
             "weatherDesc": "bezchmurnie",
             "weather": "Clear",
+            "baseprice": 218.0,
         },
         "newyork": {
             "name": "Port lotniczy Johna F. Kenned'ego",
@@ -89,6 +63,7 @@ let airportData = {
             "wind": 0.5,
             "weatherDesc": "bezchmurnie",
             "weather": "Clear",
+            "baseprice": 3053.0,
         },
     },
     "trip": {
@@ -100,7 +75,9 @@ let airportData = {
             "big": 0,
             "small": 0,
         },
-        "seatsreservd": []
+        "seatsreserved": [],
+        "ticketprice": 0,
+        "reserved": "",
     },
     "passengers": 1,
     "users": [
@@ -137,6 +114,14 @@ let airportData = {
     },
     "destination": "",
     "departure": "",
+    "currencies": {
+        "euro": 4.5,
+        "dolar": 4.1,
+        "pln": 1.0,
+        "funt": 5.0,
+        "actual": 1,
+        "sign": "PLN",
+    },
 };
 
 const ticketData = {};
@@ -149,51 +134,50 @@ const weatherIcons = {
     "extreme": "./assets/images/Windy.svg",
 };
 
-//"clouds": "./assets/images/Clouds.svg",
+// currencies
+let currDolar = "";
+let currEuro = "";
+let currFunt = "";
 
-// fetch("http://api.openweathermap.org/data/2.5/weather?lat=51.11&lon=17.02&appid=e88cbba2770d843c73cbfc59c2d7a3b0")
-//   .then(response => response.json())
-//   // .then(data => console.log(data.main.temp - 273.15))
-//   .then(data => {const div = document.createElement("div");
-//     div.innerHTML = ` ${(data.name)}: ${(data.main.temp - 273.15 ).toFixed(1)} st C`;
-//     const pogoda = document.getElementById("pogoda");
-//     pogoda.appendChild(div);
-//   })
-//   .catch(err => {
-//     console.error(err);
-//   });
+function currencies() {
+    fetch("https://api.nbp.pl/api/exchangerates/rates/a/usd/?format=json")
+        .then((resp) => resp.json())
+        .then((data) => {
+            currDolar = data.rates[0].mid;
+            // console.log(` Dolar po ${currDolar}`);
+            airportData.currencies.dolar = currDolar;
+            // btnResult.innerText = convert(Number(mojaKwota.value), Number(curExchange));
+        });
+    fetch("https://api.nbp.pl/api/exchangerates/rates/a/eur/?format=json")
+        .then((resp) => resp.json())
+        .then((data) => {
+            currEuro = data.rates[0].mid;
+            // console.log(` Euro po ${currEuro}`);
+            airportData.currencies.euro = currEuro;
+            // btnResult.innerText = convert(Number(mojaKwota.value), Number(curExchange));
+        });
+    fetch("https://api.nbp.pl/api/exchangerates/rates/a/gbp/?format=json")
+        .then((resp) => resp.json())
+        .then((data) => {
+            currFunt = data.rates[0].mid;
+            // console.log(` Funt po ${currFunt}`);
+            airportData.currencies.funt = currFunt;
+            // btnResult.innerText = convert(Number(mojaKwota.value), Number(curExchange));
+        });
+}
+
+currencies();
 
 let actWeatherData = {};
 
-const navWeatherStatus = document.getElementById("location-weather");
-
-// function actWeatherNav() {
-//     fetch("http://api.openweathermap.org/data/2.5/weather?lat=51.109444&lon=16.880278&appid=e88cbba2770d843c73cbfc59c2d7a3b0&lang=pl&units=metric")
-//         .then((response) => response.json())
-//         .then((data) => {
-//             actWeatherData = data;
-//             // console.log(actWeatherData);
-//             navWeatherStatus.textContent = `${actWeatherData.name} | ${actWeatherData.weather[0].description} | ${(actWeatherData.main.temp).toFixed(1)} ℃ | ${(+actWeatherData.wind.speed * 3.6).toFixed(2)} km/h`;
-//             airportData.airport.wroclaw.temp = +(actWeatherData.main.temp).toFixed(1);
-//             airportData.airport.wroclaw.weatherDesc = actWeatherData.weather[0].description;
-//             airportData.airport.wroclaw.weather = actWeatherData.weather[0].main;
-//             airportData.airport.wroclaw.wind = (+actWeatherData.wind.speed * 3.6).toFixed(2);
-//         })
-//         .catch((err) => console.log(err));
-// }
-
-// actWeatherNav();
-
-// 16 days https://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
-
 const weatherIcon = document.getElementById("weatherIcon");
+const weatherIcon2 = document.getElementById("weatherIcon2");
 
-// console.log(weatherIcon.getAttribute('src'));
 weatherIcon.setAttribute("src", weatherIcons.clear);
-// console.log(weatherIcon.getAttribute('src'));
-// chwilę obiekt trzeba dopisać
 
-// wczytania api pogodowego i przypisanie icon nav bar na odpowiednią pogodę
+// wczytani api pogodowego i przypisanie icon navbar na odpowiednią pogodę
+
+const navWeatherStatus = document.getElementById('location-weather');
 
 function actWeatherDest(where) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${airportData.airport[where].lat}&lon=${airportData.airport[where].long}&appid=e88cbba2770d843c73cbfc59c2d7a3b0&lang=pl&units=metric`)
@@ -212,31 +196,37 @@ function actWeatherDest(where) {
                 navWeatherStatus.textContent = `${calCurrentDate} | ${currentTime} | ${actWeatherData.name} | ${actWeatherData.weather[0].description} | ${actWeatherData.main.temp.toFixed(1)} ℃ | ${
                     actWeatherData.wind.speed
                 } km/h`;
-                switch (airportData.airport[where].weather) {
-                    case "Clear":
-                        weatherIcon.setAttribute("src", weatherIcons.clear);
-                        break;
-                    case "Clouds":
-                        weatherIcon.setAttribute("src", weatherIcons.clouds);
-                        break;
-                    case "Rain":
-                        weatherIcon.setAttribute("src", weatherIcons.rain);
-                        break;
-                    case "Drizzle":
-                        weatherIcon.setAttribute("src", weatherIcons.drizzle);
-                        break;
-                    case "Extreme":
-                        weatherIcon.setAttribute("src", weatherIcons.extreme);
-                        break;
-                    default:
-                        weatherIcon.setAttribute("src", weatherIcons.clear);
-                }
+                whichIcon(airportData.airport[where].weather, weatherIcon);
             }
         })
         .catch((err) => console.log(err));
 }
 
+function whichIcon(weather, where){
+    switch (weather) {
+        case "Clear":
+            where.setAttribute("src", weatherIcons.clear);
+            break;
+        case "Clouds":
+            where.setAttribute("src", weatherIcons.clouds);
+            break;
+        case "Rain":
+            where.setAttribute("src", weatherIcons.rain);
+            break;
+        case "Drizzle":
+            where.setAttribute("src", weatherIcons.drizzle);
+            break;
+        case "Extreme":
+            where.setAttribute("src", weatherIcons.extreme);
+            break;
+        default:
+            where.setAttribute("src", weatherIcons.clear);
+    }
+}
+
 Object.keys(airportData.airport).forEach((e) => actWeatherDest(e));
+
+console.log(airportData.airport);
 
 // ===Modal===
 const openEls = document.querySelectorAll("[data-open]");
@@ -254,27 +244,12 @@ for (const el of openEls) {
 // Pressing btn close
 const closeEls = document.querySelectorAll("[data-close]");
 const aproveEls = document.querySelectorAll("[data-aprove]");
-// const isVisible = "is-visible";
 
 for (const el of closeEls) {
     el.addEventListener("click", function () {
         this.parentElement.parentElement.parentElement.classList.remove(isVisible);
     });
 }
-
-// Setting modal aproved
-// let aproveVal = false;
-// for (const el of aproveEls) {
-//     el.addEventListener("click", function () {
-//         console.log("Aproved!!!");
-//         User.aproveVal = true;
-//         // console.log(User);
-//         document.querySelector(".modal.is-visible").classList.remove(isVisible);
-//         // this.parentElement.parentElement.parentElement.classList.remove(isVisible);
-//     });
-// }
-// Clicking outside modal
-// const isVisible = "is-visible";921
 
 document.addEventListener(
     "click",
@@ -299,14 +274,11 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
-// Wybór celu podróży destination do wyniesienia do modułów
-
+// Destination selection
 const selectDest = document.getElementById("select-dest");
 const selectDepart = document.getElementById("select-depart");
 const acceptDest = document.getElementById("set-dest");
 const acceptDepart = document.getElementById("set-depart");
-// const resultDest = document.getElementById("result-dest");
-// const resultDest2 = document.getElementById("btn-label-dest");
 const resultDestClass = document.getElementsByClassName("result-dest");
 const resultDepartClass = document.getElementsByClassName("result-depart");
 const linkDestSite = document.getElementById("linkDestSite");
@@ -314,7 +286,6 @@ const linkDestInfo = document.getElementById("linkDestInfo");
 const linkDepartSite = document.getElementById("linkDepartSite");
 const linkDepartInfo = document.getElementById("linkDepartInfo");
 const footerLinksDest = document.getElementsByClassName("footerLinksDest");
-// const footerLinksDepart = document.getElementsByClassName('footerLinksDepart');
 const footerLinksDepart = document.querySelectorAll(".footerLinksDepart");
 // Date section
 const departureDate = document.getElementById("select-depart-date");
@@ -345,23 +316,26 @@ const avatar = document.querySelector(".avatar");
 const loginModal = document.getElementById("modal5");
 const loginModalBtn = document.getElementById("loginModalBtn");
 const resultAirplane = document.querySelectorAll(".result-airplane");
+// weather status update
+const resultWeatherDest = document.getElementById("result-weather-dest");
 // baggage section
 const baggageBtn = document.getElementById("btnBaggage");
 const bigBagNum = document.getElementById("bigBagNum");
 const smallBagNum = document.getElementById("smallBagNum");
 const resultBigBag = document.getElementById("result-big-bag");
 const resultSmallBag = document.getElementById("result-small-bag");
-
 // aside section
 const planeImg = document.getElementById("showPlane");
 const btnAirplane = document.getElementById("btnAirplane");
 const btnPlace = document.getElementById("btnPlace");
-const boing737 = document.getElementById('b737');
-const resultSeats = document.querySelector('.result-seats');
-const setPlace = document.getElementById('set-place');
-const btnPrice = document.getElementById('btnPrice');
-
-// console.log(departureDate.value);
+const boing737 = document.getElementById("b737");
+const resultSeats = document.querySelector(".result-seats");
+const setPlace = document.getElementById("set-place");
+// ticket calculation
+const btnPrice = document.getElementById("btnPrice");
+const btnCurr = document.querySelectorAll(".btn.curr");
+//reservation
+const reservation = document.getElementById('reservation');
 
 departureDate.setAttribute("min", calCurrentDate);
 arrivalDate.setAttribute("min", calCurrentDate);
@@ -370,7 +344,6 @@ class Where {
     constructor(dest) {
         this.value = dest;
     }
-
     Write() {
         if (this.value == "poznan") {
             this.value = "Poznań";
@@ -389,23 +362,15 @@ acceptDest.addEventListener(
     "click",
     function () {
         const tempDest = new Where(selectDest.value);
-        console.log("Co jest w seleckie : ", tempDest.value);
+        // console.log("Co jest w seleckie : ", tempDest.value);
         if (tempDest.value === "" || tempDest.value === undefined) {
-            // console.log("zakceptowano undefined: ", tempDest.value);
-            // resultDest.textContent = tempDest.Write();
-            // resultDest2.textContent = tempDest.Write();
             resultDestClass[0].textContent = "Wybierz coś";
             resultDestClass[1].textContent = "Wybierz coś";
         } else {
-            console.log("nie ma undefined.. : ", tempDest.value);
-            // resultDest.textContent = tempDest.Write();
-            // resultDest2.textContent = tempDest.Write();
             resultDestClass[0].textContent = tempDest.Write();
             resultDestClass[1].textContent = tempDest.Write();
         }
-        console.log("Dane do setLink dest ", tempDest.Write());
         setLink(tempDest.Write());
-        // console.log(footerLinksDest);
         [...footerLinksDest].forEach((e) => e.classList.add("show"));
         return zapiszData(tempDest.Write(), "destination");
     },
@@ -416,24 +381,14 @@ acceptDepart.addEventListener(
     "click",
     function () {
         const tempDepart = new Where(selectDepart.value);
-        console.log("Co jest w seleckie : ", tempDepart.value);
         if (tempDepart.value === "" || tempDepart.value === undefined) {
-            // console.log("zakceptowano undefined: ", tempDepart.value);
-            // resultDepart.textContent = tempDepart.Write();
-            // resultDepart2.textContent = tempDepart.Write();
             resultDepartClass[0].textContent = "Wybierz coś";
             resultDepartClass[1].textContent = "Wybierz coś";
         } else {
-            // console.log("nie ma undefined.. : ", tempDepart.value);
-            // resultDepart.textContent = tempDepart.Write();
-            // resultDepart2.textContent = tempDepart.Write();
             resultDepartClass[0].textContent = tempDepart.Write();
             resultDepartClass[1].textContent = tempDepart.Write();
         }
-        console.log("Dane do setLink depart ", tempDepart.Write());
         setLink(tempDepart.Write());
-        // console.log(footerLinksDepart);
-        // footerLinks.forEach((e) => e.classList.toggle('show'));
         [...footerLinksDepart].forEach((e) => e.classList.add("show"));
         return zapiszData(tempDepart.Write(), "departure");
     },
@@ -442,19 +397,10 @@ acceptDepart.addEventListener(
 
 const zapiszData = (data, where) => {
     airportData[where] = data;
-
-    console.log("Sprawdzenie odczyt: ", airportData.where, airportData);
-    // console.log("co jest w select Dest:", selectDest.value);
-    // console.log("co jest w selectDepart:", selectDepart.value);
-    // console.log("airportData dest", airportData);
     departureDate.setAttribute("min", calTomorrow);
-    // console.log(departureDate.value);
-    // console.log(arrivalDate.value);
-    console.log(airportData.destination);
 };
 
 function setLink(data) {
-    // console.log("data z setLink:", data);
     switch (data) {
         case "Wrocław":
             linkDepartSite.setAttribute("href", airportData.airport.wroclaw.homepage);
@@ -465,19 +411,25 @@ function setLink(data) {
             linkDestInfo.setAttribute("href", airportData.airport.london.infopage);
             resultAirplane.forEach((e) => (e.textContent = airportData.airplanes.big));
             planeImg.setAttribute("src", airportData.airplanes[737]);
-            boing737.classList.remove('hideStronger');
+            boing737.classList.remove("hideStronger");
+            resultWeatherDest.textContent = `Aktualna pogoda dla lotniska: ${airportData.airport.london.name} | temp:  ${airportData.airport.london.temp} ℃ | ${airportData.airport.london.weatherDesc}   ${(airportData.airport.london.wind).toFixed(1)} km/h`;
+            whichIcon(airportData.airport.london.weather, weatherIcon2);
             break;
         case "Poznań":
             linkDestSite.setAttribute("href", airportData.airport.poznan.homepage);
             linkDestInfo.setAttribute("href", airportData.airport.poznan.infopage);
             resultAirplane.forEach((e) => (e.textContent = airportData.airplanes.small));
             planeImg.setAttribute("src", airportData.airplanes[175]);
+            resultWeatherDest.textContent = `Aktualna pogoda dla lotniska: ${airportData.airport.poznan.name} | temp:  ${airportData.airport.poznan.temp} ℃ | ${airportData.airport.poznan.weatherDesc}   ${(airportData.airport.poznan.wind).toFixed(1)} km/h`;
+            whichIcon(airportData.airport.poznan.weather, weatherIcon2);
             break;
         case "Nowy York":
             linkDestSite.setAttribute("href", airportData.airport.newyork.homepage);
             linkDestInfo.setAttribute("href", airportData.airport.newyork.infopage);
             resultAirplane.forEach((e) => (e.textContent = airportData.airplanes.biggest));
             planeImg.setAttribute("src", airportData.airplanes[787]);
+            resultWeatherDest.textContent = `Aktualna pogoda dla lotniska: ${airportData.airport.newyork.name} | temp:  ${airportData.airport.newyork.temp} ℃ | ${airportData.airport.newyork.weatherDesc}   ${(airportData.airport.newyork.wind).toFixed(1)} km/h`;
+            whichIcon(airportData.airport.newyork.weather, weatherIcon2);
             break;
         default:
             resultAirplane[0].textContent = "Brak danych";
@@ -490,21 +442,19 @@ acceptArrivalDateBtn.addEventListener(
         if (arrivalDate.value == "") {
             infoArrivalDate.classList.add("showinfo");
         } else {
-            console.log("Data Arrival accepted", arrivalDate.value);
             airportData.trip.arrivaldate = arrivalDate.value;
             infoArrivalDate.classList.remove("showinfo");
             resultArrivalDate[0].textContent = airportData.trip.arrivaldate;
         }
         if (airportData.trip.arrivaldate != "" && airportData.trip.departuredate != "") {
-            console.log(" wybrano dwie daty");
 
             tripLength(airportData.trip.departuredate, airportData.trip.arrivaldate);
             resultTripLength[0].textContent = airportData.trip.length;
-            // airportData.trip.length = airportData.trip.departuredate - airportData.trip.arrivaldate
         }
     },
     false
 );
+
 acceptDepartDateBtn.addEventListener(
     "click",
     function () {
@@ -517,7 +467,6 @@ acceptDepartDateBtn.addEventListener(
             arrivalDate.setAttribute("min", departureDate.value); // ograniczenie powrotu o wylot
             resultDepartDate[0].textContent = airportData.trip.departuredate;
         }
-
         if (airportData.trip.arrivaldate != "" && airportData.trip.departuredate != "") {
             console.log(" wybrano dwie daty");
             tripLength(airportData.trip.departuredate, airportData.trip.arrivaldate);
@@ -537,15 +486,12 @@ function tripLength(start, end) {
 decPassNr.addEventListener(
     "click",
     function () {
-        // console.log("ujmij passengerow")
         passNum.value--;
         if (passNum.value < 1) {
             passNum.value = 1;
         }
         airportData.passengers = passNum.value;
         resultPassNum.textContent = airportData.passengers;
-        // resultPassNum.textContent = passNum.value.toString();
-        // console.log(passNum.value, airportData.passengers)
     },
     false
 );
@@ -553,12 +499,9 @@ decPassNr.addEventListener(
 incPassNr.addEventListener(
     "click",
     function () {
-        // console.log("dodaj passengerow")
         passNum.value++;
         airportData.passengers = passNum.value;
         resultPassNum.textContent = airportData.passengers;
-        // console.log(resultPassNum.textContent);
-        // console.log(passNum.value , airportData.passengers)
     },
     false
 );
@@ -567,23 +510,13 @@ loginBtn.addEventListener("click", CheckPass);
 
 function CheckPass() {
     let arrName = airportData.users.map((e) => e.name);
-    let arrEmail = airportData.users.map((e) => e.email);
-    let arrPass = airportData.users.map((e) => e.password);
-
-    // console.log(loginName.value)
-    // console.log(loginEmail.value)
-    // console.log(loginPass.value)
-    // console.log(arrName.some(name => name == loginName.value));
-
     if (arrName.some((name) => name == loginName.value) !== true) {
         // console.log('nie ma cie w bazie ');
         loginInfoName.classList.add("showinfo");
     } else {
         loginInfoName.classList.remove("showinfo");
-
         if ((airportData.users.find((user) => user.name == loginName.value).email == loginEmail.value) !== true) {
-            console.log("zły email ", airportData.users.find((user) => user.name == loginName.value).email);
-
+            // console.log("zły email ", airportData.users.find((user) => user.name == loginName.value).email);
             loginInfoEmail.classList.add("showinfo");
         } else {
             loginInfoEmail.classList.remove("showinfo");
@@ -592,21 +525,18 @@ function CheckPass() {
                     "złe hasło ",
                     airportData.users.find((user) => user.name == loginName.value)
                 );
-
                 loginInfoPass.classList.add("showinfo");
             } else {
                 loginInfoPass.classList.remove("showinfo");
                 console.log("logged in... as ", loginName.value);
-                // funkcja szczegółów i awatara.
                 Login(loginName.value);
             }
         }
     }
+    ticketCalc();
 }
 
-
 function Login(name) {
-    console.log("funkcja login", airportData.loggedin);
     airportData.loggedin = name;
     resultLogin.textContent = airportData.loggedin;
     avatar.setAttribute("src", airportData.users.find((user) => user.name == name).avatar);
@@ -617,7 +547,9 @@ function Login(name) {
     baggageBtn.classList.remove("hide");
     btnPlace.classList.remove("hide");
     btnPrice.classList.remove("hide");
-    
+    resultWeatherDest.classList.remove("hide");
+    weatherIcon2.classList.remove("hide");
+    reservation.classList.remove('hide');
 }
 
 bigBagNum.addEventListener(
@@ -629,6 +561,7 @@ bigBagNum.addEventListener(
     },
     false
 );
+
 smallBagNum.addEventListener(
     "change",
     () => {
@@ -641,39 +574,32 @@ smallBagNum.addEventListener(
 
 let Seats = [];
 function chooseSeat() {
-    
     const svgImg = document.getElementsByTagName("g");
     let list = [...svgImg];
     list = list.filter((e) => e.hasAttribute("class"));
-    // console.log(list);
     list.forEach((e) =>
         e.addEventListener(
             "click",
             function (e) {
-                
-                let parent = e.target.parentElement
+                let parent = e.target.parentElement;
                 let seat1 = e.target.parentElement.parentElement.classList;
-                // console.log(seat1.value);
-                if (!parent.classList.contains('selected')) {
-                    parent.classList.toggle('selected');
+                if (!parent.classList.contains("selected")) {
+                    parent.classList.toggle("selected");
                     Seats.push(seat1.value);
                 } else {
-                    Seats.splice(Seats.indexOf(seat1.value),1);
-                    parent.classList.remove('selected');
+                    Seats.splice(Seats.indexOf(seat1.value), 1);
+                    parent.classList.remove("selected");
                 }
 
                 if (Seats.length > airportData.passengers) {
-                    console.log("liczba zarez. miejsc <= passa" , Seats.length);
-                    Seats.splice(Seats.indexOf(seat1.value),1);
-                    parent.classList.remove('selected');
+                    console.log("liczba zarez. miejsc <= passa", Seats.length);
+                    Seats.splice(Seats.indexOf(seat1.value), 1);
+                    parent.classList.remove("selected");
                 }
-                // console.log(parent.classList.contains('selected'))
-                // console.log(parent.classList);
                 e.target.parentElement.parentElement.classList[0];
-                // console.log(Seats);
-                airportData.trip.seatsreservd = Seats;
-                let lista = Seats.join(', ');
-                // console.log(lista);
+
+                airportData.trip.seatsreserved = Seats;
+                let lista = Seats.join(", ");
                 resultSeats.textContent = lista;
             },
             false
@@ -681,46 +607,120 @@ function chooseSeat() {
     );
 }
 
-setPlace.addEventListener('click', function () {
-    boing737.classList.toggle('hide');
-    planeImg.classList.toggle('hide');
+setPlace.addEventListener("click", function () {
+    boing737.classList.toggle("hide");
+    planeImg.classList.toggle("hide");
+});
+
+// ticket calculation
+
+const resultPrice = document.querySelectorAll(".result-price");
+const resultCurr = document.querySelectorAll(".result-curr");
+
+function ticketCalc() {
+    let tripLength = airportData.trip.length;
+    let tripPassengers = airportData.passengers;
+    let tripDest = airportData.destination;
+    let tripWays = airportData.trip.ways;
+    let deppDate = airportData.trip.departuredate; 
+    let arrDate = airportData.trip.arrivaldate; 
+    let baggBigCount = airportData.trip.baggage.big;
+    let baggSmallCount = airportData.trip.baggage.small;
+    let pricePerPerson;
+
+    if (tripDest == "") {
+        console.log(" cel podróży pusty ");
+        tripWays = 0;
+    } else if (tripDest != "") {
+        switch (tripDest) {
+            case "Londyn":
+                pricePerPerson = airportData.airport.london.baseprice;
+                break;
+            case "Poznań":
+                pricePerPerson = airportData.airport.poznan.baseprice;
+                break;
+            case "Nowy York":
+                pricePerPerson = airportData.airport.newyork.baseprice;
+                break;
+            default:
+                pricePerPerson = 1;
+        }
+
+        console.log(" cel podróży wyznaczony ");
+        if (arrDate == "" && deppDate == "") {
+            console.log("nie wybrano daty ");
+            tripWays = 0;
+        } else if (arrDate == "" || deppDate == "") {
+            console.log("wybran otylko jeden kier wylot lub powror");
+            tripWays = 1;
+        } else if (arrDate != "" && deppDate != "") {
+            console.log("wybran dwa  kier wylot i powrót");
+            tripWays = 2;
+        }
+    }
+
+    let ticketPrice = +(
+        (tripPassengers * pricePerPerson * tripWays + +(pricePerPerson * tripWays * 0.1 * baggBigCount).toFixed(2) + +(pricePerPerson * tripWays * 0.07 * baggSmallCount).toFixed(2)) /
+        airportData.currencies.actual
+    ).toFixed(2);
+    airportData.trip.ticketprice = ticketPrice;
+    resultPrice.forEach((e) => (e.textContent = airportData.trip.ticketprice));
+    resultCurr.forEach((e) => (e.textContent = airportData.currencies.sign));
+
+    console.log(ticketPrice);
+}
+
+btnPrice.addEventListener(
+    "click",
+    function () {
+        ticketCalc();
+    },
+    false
+);
+
+btnCurr.forEach((e) =>
+    e.addEventListener(
+        "click",
+        function (e) {
+            let target = e.target;
+            switch (target.textContent) {
+                case "€":
+                    airportData.currencies.actual = airportData.currencies.euro;
+                    airportData.currencies.sign = "€";
+                    break;
+                case "$":
+                    airportData.currencies.actual = airportData.currencies.dolar;
+                    airportData.currencies.sign = "$";
+                    break;
+                case "£":
+                    airportData.currencies.actual = airportData.currencies.funt;
+                    airportData.currencies.sign = "£";
+                    break;
+                case "PLN":
+                    airportData.currencies.actual = airportData.currencies.pln;
+                    airportData.currencies.sign = "PLN";
+                    break;
+                default:
+                    airportData.currencies.actual = 1;
+                    airportData.currencies.sign = "PLN";
+            }
+            ticketCalc();
+        },
+        false
+    )
+);
+chooseSeat();
+
+// reservation
+const textInfo = document.getElementById('text-info');
+
+reservation.addEventListener('click', function () {
+    let ticetId = "";
+    const resInfo = document.createElement('p');
+    if ( airportData.trip.reserved == "") {
+        ticetId = `${(Math.random()*1000000).toFixed()}${airportData.loggedin}${airportData.trip.departuredate}`;
+        resInfo.textContent = `Zarezerwowano bilet #id ${ticetId}`;
+        textInfo.appendChild(resInfo);
+        airportData.trip.reserved = ticetId;
+    }
 })
-
-chooseSeat()
-
-
-
-console.log(Seats);
-
-// const loginName = document.getElementById('login-name');
-// const loginEmail = document.getElementById('login-email');
-// const loginPass = document.getElementById('login-pass');
-
-// airportData.passengers = passNum.value;
-// console.log(passNum.value, " wartość w passnum")
-
-// const resultDepartDate = document.querySelectorAll(".result-depart-date");
-// const resultArrivalDate = document.querySelectorAll(".result-arrival-date");
-// const resultTripLength = document.querySelectorAll(".result-trip-length");
-
-// Validacja danych
-
-// departureDate.addEventListener("change", () => {
-//         console.log("na wydarzenia zmiany", departureDate.value);
-//     },false);
-
-// console.log(baza);
-
-// console.log(baza);
-// userData.destination = tempDest.Write();
-
-// Do prezentowania wyniku po dokonaniu wyboru w seleckcie
-//const result = document.getElementById("show-dest");
-// selectDest.addEventListener("change", () => {
-//     console.log("na wydarzenia zmiany", selectDest.value);
-//     const tempDest = new Where(selectDest.value);
-//     result.textContent = tempDest.Write();
-// },false);
-
-//=================================================
-// ================================================
