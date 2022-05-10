@@ -316,6 +316,8 @@ button.close-modal:hover{
 .btn.place.hide,
 #b737.hide,
 #b737.hideStronger,
+#b787.hide,
+#b787.hideStronger,
 .btn.price.hide,
 #result-weather-dest.hide,
 #weatherIcon2.hide,
@@ -325,7 +327,7 @@ button.close-modal:hover{
 }
 
 
-#b737, #embraer {
+#b737, #embraer, #b787 {
     display:block;
     overflow-y: scroll;
     height: 500px;

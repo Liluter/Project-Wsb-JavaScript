@@ -1,6 +1,6 @@
 import style from "./css/index.scss";
 import baza from "./assets/airportData.json";
-
+let airportData = baza;
 let day = 86400000;
 let currentTime = new Date();
 
@@ -12,117 +12,117 @@ let tommorow = new Date(currentDate.getTime() + day);
 let calTomorrow = tommorow.toISOString().slice(0, 10);
 let inFiveDays = new Date(Date.parse("2022-05-12")); // za 5 dni z klendarza
 
-let airportData = {
-    "airport": {
-        "wroclaw": {
-            "name": "Port lotniczy Wrocław-Strachowice",
-            "lat": "51.109444",
-            "long": "16.880278",
-            "iata": "WRO",
-            "homepage": "https://airport.wroclaw.pl",
-            "infopage": "https://airportguide.com/airport/info/WRO",
-            "temp": 15,
-            "wind": 0.5,
-            "weatherDesc": "bezchmurnie",
-            "weather": "Clear",
-        },
-        "london": {
-            "name": "Londyn Heathrow",
-            "lat": "51.4706",
-            "long": "-.461941",
-            "iata": "LHR",
-            "homepage": "https://www.heathrow.com",
-            "infopage": "https://airportguide.com/airport/info/LHR",
-            "temp": 7,
-            "wind": 0.5,
-            "weatherDesc": "bezchmurnie",
-            "weather": "Clear",
-            "baseprice": 1063.0,
-        },
-        "poznan": {
-            "name": "Port Lotniczy Poznań-Ławica im. Henryka Wieniawskiego",
-            "lat": "52.421001",
-            "long": "16.8263",
-            "iata": "POZ",
-            "homepage": "http://www.airport-poznan.com.pl/",
-            "infopage": "https://airportguide.com/airport/info/POZ",
-            "temp": 7,
-            "wind": 0.5,
-            "weatherDesc": "bezchmurnie",
-            "weather": "Clear",
-            "baseprice": 218.0,
-        },
-        "newyork": {
-            "name": "Port lotniczy Johna F. Kenned'ego",
-            "lat": "40.6329",
-            "long": "-73.7714",
-            "iata": "JFK",
-            "homepage": "https://www.jfkairport.com",
-            "infopage": "https://airportguide.com/airport/info/JFK",
-            "temp": 7,
-            "wind": 0.5,
-            "weatherDesc": "bezchmurnie",
-            "weather": "Clear",
-            "baseprice": 3053.0,
-        },
-    },
-    "trip": {
-        "departuredate": "",
-        "arrivaldate": "",
-        "length": 0,
-        "ways": "",
-        "baggage": {
-            "big": 0,
-            "small": 0,
-        },
-        "seatsreserved": [],
-        "ticketprice": 0,
-        "reserved": "",
-    },
-    "passengers": 1,
-    "users": [
-        {
-            "id": 0,
-            "name": "Karol",
-            "email": "karolawdziewicz@gmail.com",
-            "password": "bestcode",
-            "avatar": "./assets/images/avatarKarol.svg",
-        },
-        {
-            "id": 1,
-            "name": "Piotrek",
-            "email": "peter@gmail.com",
-            "password": "simplecode",
-            "avatar": "./assets/images/AvatarPiotrek.svg",
-        },
-        {
-            "id": 2,
-            "name": "Mulan",
-            "email": "donkey@gmail.com",
-            "password": "abrakadabra",
-            "avatar": "./assets/images/AvatarMulan.svg",
-        },
-    ],
-    "loggedin": "",
-    "airplanes": {
-        "small": "Embraer 175",
-        "big": "Boeing 737-800",
-        "biggest": "Boeing 787-10",
-        "175": "./assets/images/LOT_Embraer175.jpg",
-        "737": "./assets/images/Boeing_737_800.jpg",
-        "787": "./assets/images/Boeing-787-8-rev2.jpg",
-    },
-    "destination": "",
-    "departure": "",
-    "currencies": {
-        "euro": 4.5,
-        "dolar": 4.1,
-        "pln": 1.0,
-        "funt": 5.0,
-        "actual": 1,
-        "sign": "PLN",
-    },
-};
+// let airportData = {
+//     "airport": {
+//         "wroclaw": {
+//             "name": "Port lotniczy Wrocław-Strachowice",
+//             "lat": "51.109444",
+//             "long": "16.880278",
+//             "iata": "WRO",
+//             "homepage": "https://airport.wroclaw.pl",
+//             "infopage": "https://airportguide.com/airport/info/WRO",
+//             "temp": 15,
+//             "wind": 0.5,
+//             "weatherDesc": "bezchmurnie",
+//             "weather": "Clear",
+//         },
+//         "london": {
+//             "name": "Londyn Heathrow",
+//             "lat": "51.4706",
+//             "long": "-.461941",
+//             "iata": "LHR",
+//             "homepage": "https://www.heathrow.com",
+//             "infopage": "https://airportguide.com/airport/info/LHR",
+//             "temp": 7,
+//             "wind": 0.5,
+//             "weatherDesc": "bezchmurnie",
+//             "weather": "Clear",
+//             "baseprice": 1063.0,
+//         },
+//         "poznan": {
+//             "name": "Port Lotniczy Poznań-Ławica im. Henryka Wieniawskiego",
+//             "lat": "52.421001",
+//             "long": "16.8263",
+//             "iata": "POZ",
+//             "homepage": "http://www.airport-poznan.com.pl/",
+//             "infopage": "https://airportguide.com/airport/info/POZ",
+//             "temp": 7,
+//             "wind": 0.5,
+//             "weatherDesc": "bezchmurnie",
+//             "weather": "Clear",
+//             "baseprice": 218.0,
+//         },
+//         "newyork": {
+//             "name": "Port lotniczy Johna F. Kenned'ego",
+//             "lat": "40.6329",
+//             "long": "-73.7714",
+//             "iata": "JFK",
+//             "homepage": "https://www.jfkairport.com",
+//             "infopage": "https://airportguide.com/airport/info/JFK",
+//             "temp": 7,
+//             "wind": 0.5,
+//             "weatherDesc": "bezchmurnie",
+//             "weather": "Clear",
+//             "baseprice": 3053.0,
+//         },
+//     },
+//     "trip": {
+//         "departuredate": "",
+//         "arrivaldate": "",
+//         "length": 0,
+//         "ways": "",
+//         "baggage": {
+//             "big": 0,
+//             "small": 0,
+//         },
+//         "seatsreserved": [],
+//         "ticketprice": 0,
+//         "reserved": "",
+//     },
+//     "passengers": 1,
+//     "users": [
+//         {
+//             "id": 0,
+//             "name": "Karol",
+//             "email": "karolawdziewicz@gmail.com",
+//             "password": "bestcode",
+//             "avatar": "./assets/images/avatarKarol.svg",
+//         },
+//         {
+//             "id": 1,
+//             "name": "Piotrek",
+//             "email": "peter@gmail.com",
+//             "password": "simplecode",
+//             "avatar": "./assets/images/AvatarPiotrek.svg",
+//         },
+//         {
+//             "id": 2,
+//             "name": "Mulan",
+//             "email": "donkey@gmail.com",
+//             "password": "abrakadabra",
+//             "avatar": "./assets/images/AvatarMulan.svg",
+//         },
+//     ],
+//     "loggedin": "",
+//     "airplanes": {
+//         "small": "Embraer 175",
+//         "big": "Boeing 737-800",
+//         "biggest": "Boeing 787-10",
+//         "175": "./assets/images/LOT_Embraer175.jpg",
+//         "737": "./assets/images/Boeing_737_800.jpg",
+//         "787": "./assets/images/Boeing-787-8-rev2.jpg",
+//     },
+//     "destination": "",
+//     "departure": "",
+//     "currencies": {
+//         "euro": 4.5,
+//         "dolar": 4.1,
+//         "pln": 1.0,
+//         "funt": 5.0,
+//         "actual": 1,
+//         "sign": "PLN",
+//     },
+// };
 
 const ticketData = {};
 
@@ -329,6 +329,7 @@ const planeImg = document.getElementById("showPlane");
 const btnAirplane = document.getElementById("btnAirplane");
 const btnPlace = document.getElementById("btnPlace");
 const boing737 = document.getElementById("b737");
+const boing787 = document.getElementById("b787");
 const embraer = document.getElementById("embraer");
 const resultSeats = document.querySelector(".result-seats");
 const setPlace = document.getElementById("set-place");
@@ -413,6 +414,8 @@ function setLink(data) {
             resultAirplane.forEach((e) => (e.textContent = airportData.airplanes.big));
             planeImg.setAttribute("src", airportData.airplanes[737]);
             boing737.classList.remove("hideStronger");
+            embraer.classList.add("hideStronger");
+            boing787.classList.add("hideStronger");
             resultWeatherDest.textContent = `Aktualna pogoda dla lotniska: ${airportData.airport.london.name} | temp:  ${airportData.airport.london.temp} ℃ | ${airportData.airport.london.weatherDesc}   ${(airportData.airport.london.wind).toFixed(1)} km/h`;
             whichIcon(airportData.airport.london.weather, weatherIcon2);
             break;
@@ -421,7 +424,9 @@ function setLink(data) {
             linkDestInfo.setAttribute("href", airportData.airport.poznan.infopage);
             resultAirplane.forEach((e) => (e.textContent = airportData.airplanes.small));
             planeImg.setAttribute("src", airportData.airplanes[175]);
+            boing737.classList.add("hideStronger");
             embraer.classList.remove("hideStronger");
+            boing787.classList.add("hideStronger");
             resultWeatherDest.textContent = `Aktualna pogoda dla lotniska: ${airportData.airport.poznan.name} | temp:  ${airportData.airport.poznan.temp} ℃ | ${airportData.airport.poznan.weatherDesc}   ${(airportData.airport.poznan.wind).toFixed(1)} km/h`;
             whichIcon(airportData.airport.poznan.weather, weatherIcon2);
             break;
@@ -430,7 +435,9 @@ function setLink(data) {
             linkDestInfo.setAttribute("href", airportData.airport.newyork.infopage);
             resultAirplane.forEach((e) => (e.textContent = airportData.airplanes.biggest));
             planeImg.setAttribute("src", airportData.airplanes[787]);
-            //svg 787
+            boing737.classList.add("hideStronger");
+            embraer.classList.add("hideStronger");
+            boing787.classList.remove("hideStronger");
             resultWeatherDest.textContent = `Aktualna pogoda dla lotniska: ${airportData.airport.newyork.name} | temp:  ${airportData.airport.newyork.temp} ℃ | ${airportData.airport.newyork.weatherDesc}   ${(airportData.airport.newyork.wind).toFixed(1)} km/h`;
             whichIcon(airportData.airport.newyork.weather, weatherIcon2);
             break;
@@ -560,7 +567,6 @@ bigBagNum.addEventListener(
     () => {
         airportData.trip.baggage.big = bigBagNum.value;
         resultBigBag.textContent = airportData.trip.baggage.big;
-        console.log("bagaz duzy w bazie :", airportData.trip.baggage.big);
     },
     false
 );
@@ -570,7 +576,6 @@ smallBagNum.addEventListener(
     () => {
         airportData.trip.baggage.small = smallBagNum.value;
         resultSmallBag.textContent = airportData.trip.baggage.small;
-        console.log("bagaz mały w bazie :", airportData.trip.baggage.small);
     },
     false
 );
@@ -612,7 +617,10 @@ function chooseSeat() {
 
 setPlace.addEventListener("click", function () {
     boing737.classList.toggle("hide");
+    boing787.classList.toggle("hide");
     embraer.classList.toggle('hide');
+ 
+
     planeImg.classList.toggle("hide");
 });
 
@@ -650,15 +658,11 @@ function ticketCalc() {
                 pricePerPerson = 1;
         }
 
-        console.log(" cel podróży wyznaczony ");
         if (arrDate == "" && deppDate == "") {
-            console.log("nie wybrano daty ");
             tripWays = 0;
         } else if (arrDate == "" || deppDate == "") {
-            console.log("wybran otylko jeden kier wylot lub powror");
             tripWays = 1;
         } else if (arrDate != "" && deppDate != "") {
-            console.log("wybran dwa  kier wylot i powrót");
             tripWays = 2;
         }
     }

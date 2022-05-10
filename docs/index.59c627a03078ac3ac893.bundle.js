@@ -62,7 +62,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.c
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Inconsolata:wght@800&effect=neon);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\r\n    --lightgray: #94bdc7;\r\n    --blue: steelblue;\r\n    --white: #fff;\r\n    --dark: rgba(11, 40, 106, 0.8);\r\n    --hot: rgb(202, 76, 76);\r\n    --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);\r\n}\r\n\r\nbutton {\r\n    cursor: pointer;\r\n    background: transparent;\r\n    border: none;\r\n    outline: none;\r\n    font-size: inherit;\r\n}\r\n\r\n\r\nbutton.close-modal {\r\n    font-size: 1.5rem;\r\n    font-weight: 900;\r\n    color: var(--dark);\r\n    margin-right:12px;\r\n}\r\nbutton.close-modal:hover{\r\n    color: var(--hot);\r\n}\r\n\r\n.btn-group {\r\n    text-align: center;\r\n}\r\n\r\n.open-modal {\r\n    font-weight: bold;\r\n    background: var(--blue);\r\n    color: var(--white);\r\n    padding: 0.75rem 1.75rem;\r\n    border-radius: 5px;\r\n    width:100%;\r\n}\r\n#modal1 {\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal2 {\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal3 {\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal4{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal5{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal5 .modal-content {\r\n    flex-direction: column;\r\n}\r\n#modal5 .login {\r\n    margin:6px;\r\n    height:32px;\r\n    width: 80%;\r\n    background-color: #fff;\r\n    border: 1px solid #2b518b;\r\n    border-radius: 5px;\r\n    font-family: \"DejaVu Sans Mono\", sans-serif;\r\n    font-style: normal;\r\n    font-weight: 400;\r\n    font-size: 0.8em;\r\n    display: flex;\r\n    align-items: center;\r\n    text-align: center;\r\n    justify-content: center;\r\n    color: #2b518b;\r\n    padding-left: 11px;\r\n    \r\n}\r\n#modal5 .login:focus-visible {\r\n    border: 2px solid #2B518B;\r\n    outline: 0 solid ;\r\n}\r\n\r\n#modal6{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n\r\n#modal7{\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n\r\n\r\n.modal {\r\n    position: relative;\r\n    display: none;\r\n    justify-content: center;\r\n    align-items: flex-start;\r\n    padding: 0;\r\n    background: rgba(0, 54, 135, 0.5);\r\n    cursor: pointer;\r\n    visibility: hidden;\r\n    opacity: 0.5;\r\n    transition: all 0.35s ease-in;\r\n    border-radius: 5px;\r\n    overflow:auto;\r\n    width:100%;\r\n}\r\n\r\n.modal-header>p {\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:600;\r\n    font-size: 14px;\r\n    line-height: 15px;\r\n    margin-left:12px;\r\n    color: #2b518b;\r\n}\r\n\r\n.modal-dialog {\r\n    border-radius: 5px;\r\n    background: var(--white);\r\n    overflow: auto;\r\n    cursor: default;\r\n    margin:12px;\r\n    width:90%;\r\n}\r\n\r\n.modal-content {\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 22px 0;\r\n}\r\n\r\n\r\n.active {\r\n    display: block;\r\n}\r\n\r\n\r\n#select-dest, #select-depart {\r\n    margin: 8px;\r\n}\r\n\r\n.btn-save {\r\n    padding-left: 4px;\r\n    padding-right: 4px;\r\n    width: 84px;\r\n    height:32px;\r\n    color: #20742D;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight: 400;\r\n    font-size: 16px;\r\n    line-height: 15px;\r\n    background: #7d92b3;\r\n    border: 1px solid #7d92b3;\r\n    box-sizing: border-box;\r\n    border-radius: 5px;\r\n    color:#e5e5e5;\r\n    margin: 8px;\r\n}\r\n\r\n.btn-save:hover {\r\n    background: #0f68ee;\r\n    border: 1px solid #e5e5e5;\r\n    color: #e5e5e5;\r\n}\r\n\r\n\r\n\r\n.modal-header,\r\n.modal-footer {\r\n    background: var(--lightgray);\r\n}\r\n\r\n.modal-header {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    font-size: 20px;\r\n}\r\n\r\n.modal-header .modal-close {\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.modal p + p {\r\n    margin-top: 1rem;\r\n}\r\n\r\n.modal {\r\n    visibility: hidden;\r\n    opacity: 0;\r\n    transition: all 0.45s ease-in;\r\n}\r\n\r\n.modal.is-visible {\r\n    display:flex;\r\n    visibility: visible;\r\n    opacity: 1;\r\n    backdrop-filter: brightness(1.5);\r\n}\r\n\r\n.modal-footer {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\n\r\n#linkDepartSite, #linkDepartInfo, #linkDestSite, #linkDestInfo   {\r\n    \r\n    padding: 4px;\r\n    text-decoration: none;\r\n}\r\n\r\n#linkDepartSite:hover,#linkDepartInfo:hover,#linkDestSite:hover,#linkDestInfo:hover{\r\n    color:rgb(214, 214, 214);\r\n}\r\n\r\n.footerLinksDest, .footerLinksDepart {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n#info-arrival-date,#info-departure-date {\r\n    text-align: center;\r\n    padding-bottom:20px;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:400;\r\n    font-size: 16px;\r\n    color: #2b518b;\r\n    display: none;\r\n}\r\n\r\n.login-info{\r\n    text-align: center;\r\n    padding-bottom:8px;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:400;\r\n    font-size: 16px;\r\n    color: #a62312;\r\n    display: none;\r\n}\r\n#info-arrival-date.showinfo, #info-departure-date.showinfo, #info-login-name.showinfo,#info-login-email.showinfo, #info-login-pass.showinfo {\r\n    display: block;\r\n}\r\n\r\n\r\n#loginModalBtn.hide {\r\n    display:none;\r\n    opacity: 1;\r\n}\r\n\r\n#btnAirplane {\r\n    display:flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n\r\n\r\n.btn.baggage{\r\n    display: flex;\r\n    grid-column: 1 / 2;\r\n    grid-row: 1 / 2;\r\n}\r\n.btn.place {\r\n    display: flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n.btn.price{\r\n    display: flex;\r\n    grid-column: 1 / 2;\r\n    grid-row: 1 / 2;\r\n}\r\n.btn.reserved{\r\n    background: #3f924d;\r\n    border: 1px solid #86e595;\r\n    border-radius: 5px;\r\n    display: flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n    color: #fff;\r\n}\r\n.btn.reserved:hover{\r\n    border: 2px solid #10d531;\r\n    background: #20742D;\r\n    color: rgb(22, 235, 107);\r\n}\r\n\r\n.btn.reserved.hide {\r\n    display:none;\r\n}\r\n\r\n\r\n#btnAirplane.hide,\r\n.btn.baggage.hide,\r\n.btn.place.hide,\r\n#b737.hide,\r\n#b737.hideStronger,\r\n.btn.price.hide,\r\n#result-weather-dest.hide,\r\n#weatherIcon2.hide,\r\n#embraer.hide,\r\n#embraer.hideStronger {\r\n    display:none;\r\n}\r\n\r\n\r\n#b737, #embraer {\r\n    display:block;\r\n    overflow-y: scroll;\r\n    height: 500px;\r\n    width:min-content;\r\n}\r\n\r\n.btn.curr {\r\n    width:50px;\r\n    height: 50px;\r\n    border: 3px solid  ;\r\n    border-radius: 50% 50%;\r\n    font-size: 20px;\r\n    align-items: center;\r\n    text-align: center;\r\n}\r\n\r\n.show {\r\n    visibility:visible; \r\n}\r\n\r\n.login {\r\n    margin: 12px;\r\n}\r\n\r\ndiv.svg{\r\n    overflow:auto;\r\n    justify-content: center;\r\n}\r\n\r\n\r\n[data-aprove] {\r\n    color:rgb(211, 173, 19);\r\n    font-size: 20px;\r\n    font-weight: bold;\r\n}\r\n\r\n[data-animation=\"slideInOutLeft\"] .modal-dialog {\r\n    opacity: 0;\r\n    transform: scaleY(0);\r\n    transform-origin: top center;\r\n    transition: all .350s ease-in;\r\n}\r\n\r\n[data-animation=\"slideInOutLeft\"].is-visible .modal-dialog {\r\n    opacity: 1;\r\n    transform: none;\r\n    transition-delay: 0.2s;\r\n    transform: scaleY(1);\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/css/modal.css"],"names":[],"mappings":"AAKA;IACI,oBAAoB;IACpB,iBAAiB;IACjB,aAAa;IACb,8BAA8B;IAC9B,uBAAuB;IACvB,oDAAoD;AACxD;;AAEA;IACI,eAAe;IACf,uBAAuB;IACvB,YAAY;IACZ,aAAa;IACb,kBAAkB;AACtB;;;AAGA;IACI,iBAAiB;IACjB,gBAAgB;IAChB,kBAAkB;IAClB,iBAAiB;AACrB;AACA;IACI,iBAAiB;AACrB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,uBAAuB;IACvB,mBAAmB;IACnB,wBAAwB;IACxB,kBAAkB;IAClB,UAAU;AACd;AACA;IACI,kBAAkB;IAClB,eAAe;AACnB;AACA;IACI,kBAAkB;IAClB,eAAe;AACnB;AACA;IACI,kBAAkB;IAClB,eAAe;AACnB;AACA;IACI,kBAAkB;IAClB,eAAe;AACnB;AACA;IACI,kBAAkB;IAClB,eAAe;AACnB;AACA;IACI,sBAAsB;AAC1B;AACA;IACI,UAAU;IACV,WAAW;IACX,UAAU;IACV,sBAAsB;IACtB,yBAAyB;IACzB,kBAAkB;IAClB,2CAA2C;IAC3C,kBAAkB;IAClB,gBAAgB;IAChB,gBAAgB;IAChB,aAAa;IACb,mBAAmB;IACnB,kBAAkB;IAClB,uBAAuB;IACvB,cAAc;IACd,kBAAkB;;AAEtB;AACA;IACI,yBAAyB;IACzB,iBAAiB;AACrB;;AAEA;IACI,kBAAkB;IAClB,eAAe;AACnB;;AAEA;IACI,kBAAkB;IAClB,eAAe;AACnB;;;AAGA;IACI,kBAAkB;IAClB,aAAa;IACb,uBAAuB;IACvB,uBAAuB;IACvB,UAAU;IACV,iCAAiC;IACjC,eAAe;IACf,kBAAkB;IAClB,YAAY;IACZ,6BAA6B;IAC7B,kBAAkB;IAClB,aAAa;IACb,UAAU;AACd;;AAEA;IACI,oBAAoB;IACpB,kBAAkB;IAClB,eAAe;IACf,eAAe;IACf,iBAAiB;IACjB,gBAAgB;IAChB,cAAc;AAClB;;AAEA;IACI,kBAAkB;IAClB,wBAAwB;IACxB,cAAc;IACd,eAAe;IACf,WAAW;IACX,SAAS;AACb;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;IACf,6BAA6B;IAC7B,mBAAmB;IACnB,eAAe;AACnB;;;AAGA;IACI,cAAc;AAClB;;;AAGA;IACI,WAAW;AACf;;AAEA;IACI,iBAAiB;IACjB,kBAAkB;IAClB,WAAW;IACX,WAAW;IACX,cAAc;IACd,oBAAoB;IACpB,kBAAkB;IAClB,gBAAgB;IAChB,eAAe;IACf,iBAAiB;IACjB,mBAAmB;IACnB,yBAAyB;IACzB,sBAAsB;IACtB,kBAAkB;IAClB,aAAa;IACb,WAAW;AACf;;AAEA;IACI,mBAAmB;IACnB,yBAAyB;IACzB,cAAc;AAClB;;;;AAIA;;IAEI,4BAA4B;AAChC;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,8BAA8B;IAC9B,eAAe;AACnB;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,6BAA6B;AACjC;;AAEA;IACI,YAAY;IACZ,mBAAmB;IACnB,UAAU;IACV,gCAAgC;AACpC;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,8BAA8B;AAClC;;AAEA;;IAEI,YAAY;IACZ,qBAAqB;AACzB;;AAEA;IACI,wBAAwB;AAC5B;;AAEA;IACI,kBAAkB;AACtB;;;AAGA;IACI,kBAAkB;IAClB,mBAAmB;IACnB,oBAAoB;IACpB,kBAAkB;IAClB,eAAe;IACf,eAAe;IACf,cAAc;IACd,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;IAClB,oBAAoB;IACpB,kBAAkB;IAClB,eAAe;IACf,eAAe;IACf,cAAc;IACd,aAAa;AACjB;AACA;IACI,cAAc;AAClB;;;AAGA;IACI,YAAY;IACZ,UAAU;AACd;;AAEA;IACI,YAAY;IACZ,kBAAkB;IAClB,eAAe;AACnB;;;;AAIA;IACI,aAAa;IACb,kBAAkB;IAClB,eAAe;AACnB;AACA;IACI,aAAa;IACb,kBAAkB;IAClB,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,kBAAkB;IAClB,eAAe;AACnB;AACA;IACI,mBAAmB;IACnB,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,kBAAkB;IAClB,eAAe;IACf,WAAW;AACf;AACA;IACI,yBAAyB;IACzB,mBAAmB;IACnB,wBAAwB;AAC5B;;AAEA;IACI,YAAY;AAChB;;;AAGA;;;;;;;;;;IAUI,YAAY;AAChB;;;AAGA;IACI,aAAa;IACb,kBAAkB;IAClB,aAAa;IACb,iBAAiB;AACrB;;AAEA;IACI,UAAU;IACV,YAAY;IACZ,mBAAmB;IACnB,sBAAsB;IACtB,eAAe;IACf,mBAAmB;IACnB,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,uBAAuB;AAC3B;;;AAGA;IACI,uBAAuB;IACvB,eAAe;IACf,iBAAiB;AACrB;;AAEA;IACI,UAAU;IACV,oBAAoB;IACpB,4BAA4B;IAC5B,6BAA6B;AACjC;;AAEA;IACI,UAAU;IACV,eAAe;IACf,sBAAsB;IACtB,oBAAoB;AACxB","sourcesContent":["@import url(\"https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata\");\r\n@import url(\"https://fonts.googleapis.com/css?family=Tangerine\");\r\n@import url(\"https://fonts.googleapis.com/css2?family=Inconsolata:wght@800&effect=neon\");\r\n@import url(\"https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap\");\r\n\r\n:root {\r\n    --lightgray: #94bdc7;\r\n    --blue: steelblue;\r\n    --white: #fff;\r\n    --dark: rgba(11, 40, 106, 0.8);\r\n    --hot: rgb(202, 76, 76);\r\n    --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);\r\n}\r\n\r\nbutton {\r\n    cursor: pointer;\r\n    background: transparent;\r\n    border: none;\r\n    outline: none;\r\n    font-size: inherit;\r\n}\r\n\r\n\r\nbutton.close-modal {\r\n    font-size: 1.5rem;\r\n    font-weight: 900;\r\n    color: var(--dark);\r\n    margin-right:12px;\r\n}\r\nbutton.close-modal:hover{\r\n    color: var(--hot);\r\n}\r\n\r\n.btn-group {\r\n    text-align: center;\r\n}\r\n\r\n.open-modal {\r\n    font-weight: bold;\r\n    background: var(--blue);\r\n    color: var(--white);\r\n    padding: 0.75rem 1.75rem;\r\n    border-radius: 5px;\r\n    width:100%;\r\n}\r\n#modal1 {\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal2 {\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal3 {\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal4{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal5{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal5 .modal-content {\r\n    flex-direction: column;\r\n}\r\n#modal5 .login {\r\n    margin:6px;\r\n    height:32px;\r\n    width: 80%;\r\n    background-color: #fff;\r\n    border: 1px solid #2b518b;\r\n    border-radius: 5px;\r\n    font-family: \"DejaVu Sans Mono\", sans-serif;\r\n    font-style: normal;\r\n    font-weight: 400;\r\n    font-size: 0.8em;\r\n    display: flex;\r\n    align-items: center;\r\n    text-align: center;\r\n    justify-content: center;\r\n    color: #2b518b;\r\n    padding-left: 11px;\r\n    \r\n}\r\n#modal5 .login:focus-visible {\r\n    border: 2px solid #2B518B;\r\n    outline: 0 solid ;\r\n}\r\n\r\n#modal6{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n\r\n#modal7{\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n\r\n\r\n.modal {\r\n    position: relative;\r\n    display: none;\r\n    justify-content: center;\r\n    align-items: flex-start;\r\n    padding: 0;\r\n    background: rgba(0, 54, 135, 0.5);\r\n    cursor: pointer;\r\n    visibility: hidden;\r\n    opacity: 0.5;\r\n    transition: all 0.35s ease-in;\r\n    border-radius: 5px;\r\n    overflow:auto;\r\n    width:100%;\r\n}\r\n\r\n.modal-header>p {\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:600;\r\n    font-size: 14px;\r\n    line-height: 15px;\r\n    margin-left:12px;\r\n    color: #2b518b;\r\n}\r\n\r\n.modal-dialog {\r\n    border-radius: 5px;\r\n    background: var(--white);\r\n    overflow: auto;\r\n    cursor: default;\r\n    margin:12px;\r\n    width:90%;\r\n}\r\n\r\n.modal-content {\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 22px 0;\r\n}\r\n\r\n\r\n.active {\r\n    display: block;\r\n}\r\n\r\n\r\n#select-dest, #select-depart {\r\n    margin: 8px;\r\n}\r\n\r\n.btn-save {\r\n    padding-left: 4px;\r\n    padding-right: 4px;\r\n    width: 84px;\r\n    height:32px;\r\n    color: #20742D;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight: 400;\r\n    font-size: 16px;\r\n    line-height: 15px;\r\n    background: #7d92b3;\r\n    border: 1px solid #7d92b3;\r\n    box-sizing: border-box;\r\n    border-radius: 5px;\r\n    color:#e5e5e5;\r\n    margin: 8px;\r\n}\r\n\r\n.btn-save:hover {\r\n    background: #0f68ee;\r\n    border: 1px solid #e5e5e5;\r\n    color: #e5e5e5;\r\n}\r\n\r\n\r\n\r\n.modal-header,\r\n.modal-footer {\r\n    background: var(--lightgray);\r\n}\r\n\r\n.modal-header {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    font-size: 20px;\r\n}\r\n\r\n.modal-header .modal-close {\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.modal p + p {\r\n    margin-top: 1rem;\r\n}\r\n\r\n.modal {\r\n    visibility: hidden;\r\n    opacity: 0;\r\n    transition: all 0.45s ease-in;\r\n}\r\n\r\n.modal.is-visible {\r\n    display:flex;\r\n    visibility: visible;\r\n    opacity: 1;\r\n    backdrop-filter: brightness(1.5);\r\n}\r\n\r\n.modal-footer {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\n\r\n#linkDepartSite, #linkDepartInfo, #linkDestSite, #linkDestInfo   {\r\n    \r\n    padding: 4px;\r\n    text-decoration: none;\r\n}\r\n\r\n#linkDepartSite:hover,#linkDepartInfo:hover,#linkDestSite:hover,#linkDestInfo:hover{\r\n    color:rgb(214, 214, 214);\r\n}\r\n\r\n.footerLinksDest, .footerLinksDepart {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n#info-arrival-date,#info-departure-date {\r\n    text-align: center;\r\n    padding-bottom:20px;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:400;\r\n    font-size: 16px;\r\n    color: #2b518b;\r\n    display: none;\r\n}\r\n\r\n.login-info{\r\n    text-align: center;\r\n    padding-bottom:8px;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:400;\r\n    font-size: 16px;\r\n    color: #a62312;\r\n    display: none;\r\n}\r\n#info-arrival-date.showinfo, #info-departure-date.showinfo, #info-login-name.showinfo,#info-login-email.showinfo, #info-login-pass.showinfo {\r\n    display: block;\r\n}\r\n\r\n\r\n#loginModalBtn.hide {\r\n    display:none;\r\n    opacity: 1;\r\n}\r\n\r\n#btnAirplane {\r\n    display:flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n\r\n\r\n.btn.baggage{\r\n    display: flex;\r\n    grid-column: 1 / 2;\r\n    grid-row: 1 / 2;\r\n}\r\n.btn.place {\r\n    display: flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n.btn.price{\r\n    display: flex;\r\n    grid-column: 1 / 2;\r\n    grid-row: 1 / 2;\r\n}\r\n.btn.reserved{\r\n    background: #3f924d;\r\n    border: 1px solid #86e595;\r\n    border-radius: 5px;\r\n    display: flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n    color: #fff;\r\n}\r\n.btn.reserved:hover{\r\n    border: 2px solid #10d531;\r\n    background: #20742D;\r\n    color: rgb(22, 235, 107);\r\n}\r\n\r\n.btn.reserved.hide {\r\n    display:none;\r\n}\r\n\r\n\r\n#btnAirplane.hide,\r\n.btn.baggage.hide,\r\n.btn.place.hide,\r\n#b737.hide,\r\n#b737.hideStronger,\r\n.btn.price.hide,\r\n#result-weather-dest.hide,\r\n#weatherIcon2.hide,\r\n#embraer.hide,\r\n#embraer.hideStronger {\r\n    display:none;\r\n}\r\n\r\n\r\n#b737, #embraer {\r\n    display:block;\r\n    overflow-y: scroll;\r\n    height: 500px;\r\n    width:min-content;\r\n}\r\n\r\n.btn.curr {\r\n    width:50px;\r\n    height: 50px;\r\n    border: 3px solid  ;\r\n    border-radius: 50% 50%;\r\n    font-size: 20px;\r\n    align-items: center;\r\n    text-align: center;\r\n}\r\n\r\n.show {\r\n    visibility:visible; \r\n}\r\n\r\n.login {\r\n    margin: 12px;\r\n}\r\n\r\ndiv.svg{\r\n    overflow:auto;\r\n    justify-content: center;\r\n}\r\n\r\n\r\n[data-aprove] {\r\n    color:rgb(211, 173, 19);\r\n    font-size: 20px;\r\n    font-weight: bold;\r\n}\r\n\r\n[data-animation=\"slideInOutLeft\"] .modal-dialog {\r\n    opacity: 0;\r\n    transform: scaleY(0);\r\n    transform-origin: top center;\r\n    transition: all .350s ease-in;\r\n}\r\n\r\n[data-animation=\"slideInOutLeft\"].is-visible .modal-dialog {\r\n    opacity: 1;\r\n    transform: none;\r\n    transition-delay: 0.2s;\r\n    transform: scaleY(1);\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\r\n    --lightgray: #94bdc7;\r\n    --blue: steelblue;\r\n    --white: #fff;\r\n    --dark: rgba(11, 40, 106, 0.8);\r\n    --hot: rgb(202, 76, 76);\r\n    --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);\r\n}\r\n\r\nbutton {\r\n    cursor: pointer;\r\n    background: transparent;\r\n    border: none;\r\n    outline: none;\r\n    font-size: inherit;\r\n}\r\n\r\n\r\nbutton.close-modal {\r\n    font-size: 1.5rem;\r\n    font-weight: 900;\r\n    color: var(--dark);\r\n    margin-right:12px;\r\n}\r\nbutton.close-modal:hover{\r\n    color: var(--hot);\r\n}\r\n\r\n.btn-group {\r\n    text-align: center;\r\n}\r\n\r\n.open-modal {\r\n    font-weight: bold;\r\n    background: var(--blue);\r\n    color: var(--white);\r\n    padding: 0.75rem 1.75rem;\r\n    border-radius: 5px;\r\n    width:100%;\r\n}\r\n#modal1 {\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal2 {\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal3 {\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal4{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal5{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal5 .modal-content {\r\n    flex-direction: column;\r\n}\r\n#modal5 .login {\r\n    margin:6px;\r\n    height:32px;\r\n    width: 80%;\r\n    background-color: #fff;\r\n    border: 1px solid #2b518b;\r\n    border-radius: 5px;\r\n    font-family: \"DejaVu Sans Mono\", sans-serif;\r\n    font-style: normal;\r\n    font-weight: 400;\r\n    font-size: 0.8em;\r\n    display: flex;\r\n    align-items: center;\r\n    text-align: center;\r\n    justify-content: center;\r\n    color: #2b518b;\r\n    padding-left: 11px;\r\n    \r\n}\r\n#modal5 .login:focus-visible {\r\n    border: 2px solid #2B518B;\r\n    outline: 0 solid ;\r\n}\r\n\r\n#modal6{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n\r\n#modal7{\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n\r\n\r\n.modal {\r\n    position: relative;\r\n    display: none;\r\n    justify-content: center;\r\n    align-items: flex-start;\r\n    padding: 0;\r\n    background: rgba(0, 54, 135, 0.5);\r\n    cursor: pointer;\r\n    visibility: hidden;\r\n    opacity: 0.5;\r\n    transition: all 0.35s ease-in;\r\n    border-radius: 5px;\r\n    overflow:auto;\r\n    width:100%;\r\n}\r\n\r\n.modal-header>p {\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:600;\r\n    font-size: 14px;\r\n    line-height: 15px;\r\n    margin-left:12px;\r\n    color: #2b518b;\r\n}\r\n\r\n.modal-dialog {\r\n    border-radius: 5px;\r\n    background: var(--white);\r\n    overflow: auto;\r\n    cursor: default;\r\n    margin:12px;\r\n    width:90%;\r\n}\r\n\r\n.modal-content {\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 22px 0;\r\n}\r\n\r\n\r\n.active {\r\n    display: block;\r\n}\r\n\r\n\r\n#select-dest, #select-depart {\r\n    margin: 8px;\r\n}\r\n\r\n.btn-save {\r\n    padding-left: 4px;\r\n    padding-right: 4px;\r\n    width: 84px;\r\n    height:32px;\r\n    color: #20742D;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight: 400;\r\n    font-size: 16px;\r\n    line-height: 15px;\r\n    background: #7d92b3;\r\n    border: 1px solid #7d92b3;\r\n    box-sizing: border-box;\r\n    border-radius: 5px;\r\n    color:#e5e5e5;\r\n    margin: 8px;\r\n}\r\n\r\n.btn-save:hover {\r\n    background: #0f68ee;\r\n    border: 1px solid #e5e5e5;\r\n    color: #e5e5e5;\r\n}\r\n\r\n\r\n\r\n.modal-header,\r\n.modal-footer {\r\n    background: var(--lightgray);\r\n}\r\n\r\n.modal-header {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    font-size: 20px;\r\n}\r\n\r\n.modal-header .modal-close {\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.modal p + p {\r\n    margin-top: 1rem;\r\n}\r\n\r\n.modal {\r\n    visibility: hidden;\r\n    opacity: 0;\r\n    transition: all 0.45s ease-in;\r\n}\r\n\r\n.modal.is-visible {\r\n    display:flex;\r\n    visibility: visible;\r\n    opacity: 1;\r\n    backdrop-filter: brightness(1.5);\r\n}\r\n\r\n.modal-footer {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\n\r\n#linkDepartSite, #linkDepartInfo, #linkDestSite, #linkDestInfo   {\r\n    \r\n    padding: 4px;\r\n    text-decoration: none;\r\n}\r\n\r\n#linkDepartSite:hover,#linkDepartInfo:hover,#linkDestSite:hover,#linkDestInfo:hover{\r\n    color:rgb(214, 214, 214);\r\n}\r\n\r\n.footerLinksDest, .footerLinksDepart {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n#info-arrival-date,#info-departure-date {\r\n    text-align: center;\r\n    padding-bottom:20px;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:400;\r\n    font-size: 16px;\r\n    color: #2b518b;\r\n    display: none;\r\n}\r\n\r\n.login-info{\r\n    text-align: center;\r\n    padding-bottom:8px;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:400;\r\n    font-size: 16px;\r\n    color: #a62312;\r\n    display: none;\r\n}\r\n#info-arrival-date.showinfo, #info-departure-date.showinfo, #info-login-name.showinfo,#info-login-email.showinfo, #info-login-pass.showinfo {\r\n    display: block;\r\n}\r\n\r\n\r\n#loginModalBtn.hide {\r\n    display:none;\r\n    opacity: 1;\r\n}\r\n\r\n#btnAirplane {\r\n    display:flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n\r\n\r\n.btn.baggage{\r\n    display: flex;\r\n    grid-column: 1 / 2;\r\n    grid-row: 1 / 2;\r\n}\r\n.btn.place {\r\n    display: flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n.btn.price{\r\n    display: flex;\r\n    grid-column: 1 / 2;\r\n    grid-row: 1 / 2;\r\n}\r\n.btn.reserved{\r\n    background: #3f924d;\r\n    border: 1px solid #86e595;\r\n    border-radius: 5px;\r\n    display: flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n    color: #fff;\r\n}\r\n.btn.reserved:hover{\r\n    border: 2px solid #10d531;\r\n    background: #20742D;\r\n    color: rgb(22, 235, 107);\r\n}\r\n\r\n.btn.reserved.hide {\r\n    display:none;\r\n}\r\n\r\n\r\n#btnAirplane.hide,\r\n.btn.baggage.hide,\r\n.btn.place.hide,\r\n#b737.hide,\r\n#b737.hideStronger,\r\n#b787.hide,\r\n#b787.hideStronger,\r\n.btn.price.hide,\r\n#result-weather-dest.hide,\r\n#weatherIcon2.hide,\r\n#embraer.hide,\r\n#embraer.hideStronger {\r\n    display:none;\r\n}\r\n\r\n\r\n#b737, #embraer, #b787 {\r\n    display:block;\r\n    overflow-y: scroll;\r\n    height: 500px;\r\n    width:min-content;\r\n}\r\n\r\n.btn.curr {\r\n    width:50px;\r\n    height: 50px;\r\n    border: 3px solid  ;\r\n    border-radius: 50% 50%;\r\n    font-size: 20px;\r\n    align-items: center;\r\n    text-align: center;\r\n}\r\n\r\n.show {\r\n    visibility:visible; \r\n}\r\n\r\n.login {\r\n    margin: 12px;\r\n}\r\n\r\ndiv.svg{\r\n    overflow:auto;\r\n    justify-content: center;\r\n}\r\n\r\n\r\n[data-aprove] {\r\n    color:rgb(211, 173, 19);\r\n    font-size: 20px;\r\n    font-weight: bold;\r\n}\r\n\r\n[data-animation=\"slideInOutLeft\"] .modal-dialog {\r\n    opacity: 0;\r\n    transform: scaleY(0);\r\n    transform-origin: top center;\r\n    transition: all .350s ease-in;\r\n}\r\n\r\n[data-animation=\"slideInOutLeft\"].is-visible .modal-dialog {\r\n    opacity: 1;\r\n    transform: none;\r\n    transition-delay: 0.2s;\r\n    transform: scaleY(1);\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/css/modal.css"],"names":[],"mappings":"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","sourcesContent":["@import url(\"https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata\");\r\n@import url(\"https://fonts.googleapis.com/css?family=Tangerine\");\r\n@import url(\"https://fonts.googleapis.com/css2?family=Inconsolata:wght@800&effect=neon\");\r\n@import url(\"https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap\");\r\n\r\n:root {\r\n    --lightgray: #94bdc7;\r\n    --blue: steelblue;\r\n    --white: #fff;\r\n    --dark: rgba(11, 40, 106, 0.8);\r\n    --hot: rgb(202, 76, 76);\r\n    --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);\r\n}\r\n\r\nbutton {\r\n    cursor: pointer;\r\n    background: transparent;\r\n    border: none;\r\n    outline: none;\r\n    font-size: inherit;\r\n}\r\n\r\n\r\nbutton.close-modal {\r\n    font-size: 1.5rem;\r\n    font-weight: 900;\r\n    color: var(--dark);\r\n    margin-right:12px;\r\n}\r\nbutton.close-modal:hover{\r\n    color: var(--hot);\r\n}\r\n\r\n.btn-group {\r\n    text-align: center;\r\n}\r\n\r\n.open-modal {\r\n    font-weight: bold;\r\n    background: var(--blue);\r\n    color: var(--white);\r\n    padding: 0.75rem 1.75rem;\r\n    border-radius: 5px;\r\n    width:100%;\r\n}\r\n#modal1 {\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal2 {\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal3 {\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal4{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal5{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n#modal5 .modal-content {\r\n    flex-direction: column;\r\n}\r\n#modal5 .login {\r\n    margin:6px;\r\n    height:32px;\r\n    width: 80%;\r\n    background-color: #fff;\r\n    border: 1px solid #2b518b;\r\n    border-radius: 5px;\r\n    font-family: \"DejaVu Sans Mono\", sans-serif;\r\n    font-style: normal;\r\n    font-weight: 400;\r\n    font-size: 0.8em;\r\n    display: flex;\r\n    align-items: center;\r\n    text-align: center;\r\n    justify-content: center;\r\n    color: #2b518b;\r\n    padding-left: 11px;\r\n    \r\n}\r\n#modal5 .login:focus-visible {\r\n    border: 2px solid #2B518B;\r\n    outline: 0 solid ;\r\n}\r\n\r\n#modal6{\r\n    grid-column: 2 / 3;\r\n    grid-row: 2 / 3;\r\n}\r\n\r\n#modal7{\r\n    grid-column: 1 / 2;\r\n    grid-row: 2 / 3;\r\n}\r\n\r\n\r\n.modal {\r\n    position: relative;\r\n    display: none;\r\n    justify-content: center;\r\n    align-items: flex-start;\r\n    padding: 0;\r\n    background: rgba(0, 54, 135, 0.5);\r\n    cursor: pointer;\r\n    visibility: hidden;\r\n    opacity: 0.5;\r\n    transition: all 0.35s ease-in;\r\n    border-radius: 5px;\r\n    overflow:auto;\r\n    width:100%;\r\n}\r\n\r\n.modal-header>p {\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:600;\r\n    font-size: 14px;\r\n    line-height: 15px;\r\n    margin-left:12px;\r\n    color: #2b518b;\r\n}\r\n\r\n.modal-dialog {\r\n    border-radius: 5px;\r\n    background: var(--white);\r\n    overflow: auto;\r\n    cursor: default;\r\n    margin:12px;\r\n    width:90%;\r\n}\r\n\r\n.modal-content {\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 22px 0;\r\n}\r\n\r\n\r\n.active {\r\n    display: block;\r\n}\r\n\r\n\r\n#select-dest, #select-depart {\r\n    margin: 8px;\r\n}\r\n\r\n.btn-save {\r\n    padding-left: 4px;\r\n    padding-right: 4px;\r\n    width: 84px;\r\n    height:32px;\r\n    color: #20742D;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight: 400;\r\n    font-size: 16px;\r\n    line-height: 15px;\r\n    background: #7d92b3;\r\n    border: 1px solid #7d92b3;\r\n    box-sizing: border-box;\r\n    border-radius: 5px;\r\n    color:#e5e5e5;\r\n    margin: 8px;\r\n}\r\n\r\n.btn-save:hover {\r\n    background: #0f68ee;\r\n    border: 1px solid #e5e5e5;\r\n    color: #e5e5e5;\r\n}\r\n\r\n\r\n\r\n.modal-header,\r\n.modal-footer {\r\n    background: var(--lightgray);\r\n}\r\n\r\n.modal-header {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    font-size: 20px;\r\n}\r\n\r\n.modal-header .modal-close {\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.modal p + p {\r\n    margin-top: 1rem;\r\n}\r\n\r\n.modal {\r\n    visibility: hidden;\r\n    opacity: 0;\r\n    transition: all 0.45s ease-in;\r\n}\r\n\r\n.modal.is-visible {\r\n    display:flex;\r\n    visibility: visible;\r\n    opacity: 1;\r\n    backdrop-filter: brightness(1.5);\r\n}\r\n\r\n.modal-footer {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\n\r\n#linkDepartSite, #linkDepartInfo, #linkDestSite, #linkDestInfo   {\r\n    \r\n    padding: 4px;\r\n    text-decoration: none;\r\n}\r\n\r\n#linkDepartSite:hover,#linkDepartInfo:hover,#linkDestSite:hover,#linkDestInfo:hover{\r\n    color:rgb(214, 214, 214);\r\n}\r\n\r\n.footerLinksDest, .footerLinksDepart {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n#info-arrival-date,#info-departure-date {\r\n    text-align: center;\r\n    padding-bottom:20px;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:400;\r\n    font-size: 16px;\r\n    color: #2b518b;\r\n    display: none;\r\n}\r\n\r\n.login-info{\r\n    text-align: center;\r\n    padding-bottom:8px;\r\n    font-family: 'Inter';\r\n    font-style: normal;\r\n    font-weight:400;\r\n    font-size: 16px;\r\n    color: #a62312;\r\n    display: none;\r\n}\r\n#info-arrival-date.showinfo, #info-departure-date.showinfo, #info-login-name.showinfo,#info-login-email.showinfo, #info-login-pass.showinfo {\r\n    display: block;\r\n}\r\n\r\n\r\n#loginModalBtn.hide {\r\n    display:none;\r\n    opacity: 1;\r\n}\r\n\r\n#btnAirplane {\r\n    display:flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n\r\n\r\n.btn.baggage{\r\n    display: flex;\r\n    grid-column: 1 / 2;\r\n    grid-row: 1 / 2;\r\n}\r\n.btn.place {\r\n    display: flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n.btn.price{\r\n    display: flex;\r\n    grid-column: 1 / 2;\r\n    grid-row: 1 / 2;\r\n}\r\n.btn.reserved{\r\n    background: #3f924d;\r\n    border: 1px solid #86e595;\r\n    border-radius: 5px;\r\n    display: flex;\r\n    grid-column: 2 / 3;\r\n    grid-row: 1 / 2;\r\n    color: #fff;\r\n}\r\n.btn.reserved:hover{\r\n    border: 2px solid #10d531;\r\n    background: #20742D;\r\n    color: rgb(22, 235, 107);\r\n}\r\n\r\n.btn.reserved.hide {\r\n    display:none;\r\n}\r\n\r\n\r\n#btnAirplane.hide,\r\n.btn.baggage.hide,\r\n.btn.place.hide,\r\n#b737.hide,\r\n#b737.hideStronger,\r\n#b787.hide,\r\n#b787.hideStronger,\r\n.btn.price.hide,\r\n#result-weather-dest.hide,\r\n#weatherIcon2.hide,\r\n#embraer.hide,\r\n#embraer.hideStronger {\r\n    display:none;\r\n}\r\n\r\n\r\n#b737, #embraer, #b787 {\r\n    display:block;\r\n    overflow-y: scroll;\r\n    height: 500px;\r\n    width:min-content;\r\n}\r\n\r\n.btn.curr {\r\n    width:50px;\r\n    height: 50px;\r\n    border: 3px solid  ;\r\n    border-radius: 50% 50%;\r\n    font-size: 20px;\r\n    align-items: center;\r\n    text-align: center;\r\n}\r\n\r\n.show {\r\n    visibility:visible; \r\n}\r\n\r\n.login {\r\n    margin: 12px;\r\n}\r\n\r\ndiv.svg{\r\n    overflow:auto;\r\n    justify-content: center;\r\n}\r\n\r\n\r\n[data-aprove] {\r\n    color:rgb(211, 173, 19);\r\n    font-size: 20px;\r\n    font-weight: bold;\r\n}\r\n\r\n[data-animation=\"slideInOutLeft\"] .modal-dialog {\r\n    opacity: 0;\r\n    transform: scaleY(0);\r\n    transform-origin: top center;\r\n    transition: all .350s ease-in;\r\n}\r\n\r\n[data-animation=\"slideInOutLeft\"].is-visible .modal-dialog {\r\n    opacity: 1;\r\n    transform: none;\r\n    transition-delay: 0.2s;\r\n    transform: scaleY(1);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -799,6 +799,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+var airportData = _assets_airportData_json__WEBPACK_IMPORTED_MODULE_1__;
 var day = 86400000;
 var currentTime = new Date();
 currentTime = currentTime.toLocaleTimeString();
@@ -808,114 +809,118 @@ var calCurrentDate = currentDate.toISOString().slice(0, 10);
 var tommorow = new Date(currentDate.getTime() + day);
 var calTomorrow = tommorow.toISOString().slice(0, 10);
 var inFiveDays = new Date(Date.parse("2022-05-12")); // za 5 dni z klendarza
+// let airportData = {
+//     "airport": {
+//         "wroclaw": {
+//             "name": "Port lotniczy Wrocław-Strachowice",
+//             "lat": "51.109444",
+//             "long": "16.880278",
+//             "iata": "WRO",
+//             "homepage": "https://airport.wroclaw.pl",
+//             "infopage": "https://airportguide.com/airport/info/WRO",
+//             "temp": 15,
+//             "wind": 0.5,
+//             "weatherDesc": "bezchmurnie",
+//             "weather": "Clear",
+//         },
+//         "london": {
+//             "name": "Londyn Heathrow",
+//             "lat": "51.4706",
+//             "long": "-.461941",
+//             "iata": "LHR",
+//             "homepage": "https://www.heathrow.com",
+//             "infopage": "https://airportguide.com/airport/info/LHR",
+//             "temp": 7,
+//             "wind": 0.5,
+//             "weatherDesc": "bezchmurnie",
+//             "weather": "Clear",
+//             "baseprice": 1063.0,
+//         },
+//         "poznan": {
+//             "name": "Port Lotniczy Poznań-Ławica im. Henryka Wieniawskiego",
+//             "lat": "52.421001",
+//             "long": "16.8263",
+//             "iata": "POZ",
+//             "homepage": "http://www.airport-poznan.com.pl/",
+//             "infopage": "https://airportguide.com/airport/info/POZ",
+//             "temp": 7,
+//             "wind": 0.5,
+//             "weatherDesc": "bezchmurnie",
+//             "weather": "Clear",
+//             "baseprice": 218.0,
+//         },
+//         "newyork": {
+//             "name": "Port lotniczy Johna F. Kenned'ego",
+//             "lat": "40.6329",
+//             "long": "-73.7714",
+//             "iata": "JFK",
+//             "homepage": "https://www.jfkairport.com",
+//             "infopage": "https://airportguide.com/airport/info/JFK",
+//             "temp": 7,
+//             "wind": 0.5,
+//             "weatherDesc": "bezchmurnie",
+//             "weather": "Clear",
+//             "baseprice": 3053.0,
+//         },
+//     },
+//     "trip": {
+//         "departuredate": "",
+//         "arrivaldate": "",
+//         "length": 0,
+//         "ways": "",
+//         "baggage": {
+//             "big": 0,
+//             "small": 0,
+//         },
+//         "seatsreserved": [],
+//         "ticketprice": 0,
+//         "reserved": "",
+//     },
+//     "passengers": 1,
+//     "users": [
+//         {
+//             "id": 0,
+//             "name": "Karol",
+//             "email": "karolawdziewicz@gmail.com",
+//             "password": "bestcode",
+//             "avatar": "./assets/images/avatarKarol.svg",
+//         },
+//         {
+//             "id": 1,
+//             "name": "Piotrek",
+//             "email": "peter@gmail.com",
+//             "password": "simplecode",
+//             "avatar": "./assets/images/AvatarPiotrek.svg",
+//         },
+//         {
+//             "id": 2,
+//             "name": "Mulan",
+//             "email": "donkey@gmail.com",
+//             "password": "abrakadabra",
+//             "avatar": "./assets/images/AvatarMulan.svg",
+//         },
+//     ],
+//     "loggedin": "",
+//     "airplanes": {
+//         "small": "Embraer 175",
+//         "big": "Boeing 737-800",
+//         "biggest": "Boeing 787-10",
+//         "175": "./assets/images/LOT_Embraer175.jpg",
+//         "737": "./assets/images/Boeing_737_800.jpg",
+//         "787": "./assets/images/Boeing-787-8-rev2.jpg",
+//     },
+//     "destination": "",
+//     "departure": "",
+//     "currencies": {
+//         "euro": 4.5,
+//         "dolar": 4.1,
+//         "pln": 1.0,
+//         "funt": 5.0,
+//         "actual": 1,
+//         "sign": "PLN",
+//     },
+// };
 
-var airportData = {
-  "airport": {
-    "wroclaw": {
-      "name": "Port lotniczy Wrocław-Strachowice",
-      "lat": "51.109444",
-      "long": "16.880278",
-      "iata": "WRO",
-      "homepage": "https://airport.wroclaw.pl",
-      "infopage": "https://airportguide.com/airport/info/WRO",
-      "temp": 15,
-      "wind": 0.5,
-      "weatherDesc": "bezchmurnie",
-      "weather": "Clear"
-    },
-    "london": {
-      "name": "Londyn Heathrow",
-      "lat": "51.4706",
-      "long": "-.461941",
-      "iata": "LHR",
-      "homepage": "https://www.heathrow.com",
-      "infopage": "https://airportguide.com/airport/info/LHR",
-      "temp": 7,
-      "wind": 0.5,
-      "weatherDesc": "bezchmurnie",
-      "weather": "Clear",
-      "baseprice": 1063.0
-    },
-    "poznan": {
-      "name": "Port Lotniczy Poznań-Ławica im. Henryka Wieniawskiego",
-      "lat": "52.421001",
-      "long": "16.8263",
-      "iata": "POZ",
-      "homepage": "http://www.airport-poznan.com.pl/",
-      "infopage": "https://airportguide.com/airport/info/POZ",
-      "temp": 7,
-      "wind": 0.5,
-      "weatherDesc": "bezchmurnie",
-      "weather": "Clear",
-      "baseprice": 218.0
-    },
-    "newyork": {
-      "name": "Port lotniczy Johna F. Kenned'ego",
-      "lat": "40.6329",
-      "long": "-73.7714",
-      "iata": "JFK",
-      "homepage": "https://www.jfkairport.com",
-      "infopage": "https://airportguide.com/airport/info/JFK",
-      "temp": 7,
-      "wind": 0.5,
-      "weatherDesc": "bezchmurnie",
-      "weather": "Clear",
-      "baseprice": 3053.0
-    }
-  },
-  "trip": {
-    "departuredate": "",
-    "arrivaldate": "",
-    "length": 0,
-    "ways": "",
-    "baggage": {
-      "big": 0,
-      "small": 0
-    },
-    "seatsreserved": [],
-    "ticketprice": 0,
-    "reserved": ""
-  },
-  "passengers": 1,
-  "users": [{
-    "id": 0,
-    "name": "Karol",
-    "email": "karolawdziewicz@gmail.com",
-    "password": "bestcode",
-    "avatar": "./assets/images/avatarKarol.svg"
-  }, {
-    "id": 1,
-    "name": "Piotrek",
-    "email": "peter@gmail.com",
-    "password": "simplecode",
-    "avatar": "./assets/images/AvatarPiotrek.svg"
-  }, {
-    "id": 2,
-    "name": "Mulan",
-    "email": "donkey@gmail.com",
-    "password": "abrakadabra",
-    "avatar": "./assets/images/AvatarMulan.svg"
-  }],
-  "loggedin": "",
-  "airplanes": {
-    "small": "Embraer 175",
-    "big": "Boeing 737-800",
-    "biggest": "Boeing 787-10",
-    "175": "./assets/images/LOT_Embraer175.jpg",
-    "737": "./assets/images/Boeing_737_800.jpg",
-    "787": "./assets/images/Boeing-787-8-rev2.jpg"
-  },
-  "destination": "",
-  "departure": "",
-  "currencies": {
-    "euro": 4.5,
-    "dolar": 4.1,
-    "pln": 1.0,
-    "funt": 5.0,
-    "actual": 1,
-    "sign": "PLN"
-  }
-};
 var ticketData = {};
 var weatherIcons = {
   "clear": "./assets/images/Sunny2.svg",
@@ -1127,6 +1132,7 @@ var planeImg = document.getElementById("showPlane");
 var btnAirplane = document.getElementById("btnAirplane");
 var btnPlace = document.getElementById("btnPlace");
 var boing737 = document.getElementById("b737");
+var boing787 = document.getElementById("b787");
 var embraer = document.getElementById("embraer");
 var resultSeats = document.querySelector(".result-seats");
 var setPlace = document.getElementById("set-place"); // ticket calculation
@@ -1224,6 +1230,8 @@ function setLink(data) {
       });
       planeImg.setAttribute("src", airportData.airplanes[737]);
       boing737.classList.remove("hideStronger");
+      embraer.classList.add("hideStronger");
+      boing787.classList.add("hideStronger");
       resultWeatherDest.textContent = "Aktualna pogoda dla lotniska: ".concat(airportData.airport.london.name, " | temp:  ").concat(airportData.airport.london.temp, " \u2103 | ").concat(airportData.airport.london.weatherDesc, "   ").concat(airportData.airport.london.wind.toFixed(1), " km/h");
       whichIcon(airportData.airport.london.weather, weatherIcon2);
       break;
@@ -1235,7 +1243,9 @@ function setLink(data) {
         return e.textContent = airportData.airplanes.small;
       });
       planeImg.setAttribute("src", airportData.airplanes[175]);
+      boing737.classList.add("hideStronger");
       embraer.classList.remove("hideStronger");
+      boing787.classList.add("hideStronger");
       resultWeatherDest.textContent = "Aktualna pogoda dla lotniska: ".concat(airportData.airport.poznan.name, " | temp:  ").concat(airportData.airport.poznan.temp, " \u2103 | ").concat(airportData.airport.poznan.weatherDesc, "   ").concat(airportData.airport.poznan.wind.toFixed(1), " km/h");
       whichIcon(airportData.airport.poznan.weather, weatherIcon2);
       break;
@@ -1246,8 +1256,10 @@ function setLink(data) {
       resultAirplane.forEach(function (e) {
         return e.textContent = airportData.airplanes.biggest;
       });
-      planeImg.setAttribute("src", airportData.airplanes[787]); //svg 787
-
+      planeImg.setAttribute("src", airportData.airplanes[787]);
+      boing737.classList.add("hideStronger");
+      embraer.classList.add("hideStronger");
+      boing787.classList.remove("hideStronger");
       resultWeatherDest.textContent = "Aktualna pogoda dla lotniska: ".concat(airportData.airport.newyork.name, " | temp:  ").concat(airportData.airport.newyork.temp, " \u2103 | ").concat(airportData.airport.newyork.weatherDesc, "   ").concat(airportData.airport.newyork.wind.toFixed(1), " km/h");
       whichIcon(airportData.airport.newyork.weather, weatherIcon2);
       break;
@@ -1375,12 +1387,10 @@ function Login(name) {
 bigBagNum.addEventListener("change", function () {
   airportData.trip.baggage.big = bigBagNum.value;
   resultBigBag.textContent = airportData.trip.baggage.big;
-  console.log("bagaz duzy w bazie :", airportData.trip.baggage.big);
 }, false);
 smallBagNum.addEventListener("change", function () {
   airportData.trip.baggage.small = smallBagNum.value;
   resultSmallBag.textContent = airportData.trip.baggage.small;
-  console.log("bagaz mały w bazie :", airportData.trip.baggage.small);
 }, false);
 var Seats = [];
 
@@ -1421,6 +1431,7 @@ function chooseSeat() {
 
 setPlace.addEventListener("click", function () {
   boing737.classList.toggle("hide");
+  boing787.classList.toggle("hide");
   embraer.classList.toggle('hide');
   planeImg.classList.toggle("hide");
 }); // ticket calculation
@@ -1460,16 +1471,11 @@ function ticketCalc() {
         pricePerPerson = 1;
     }
 
-    console.log(" cel podróży wyznaczony ");
-
     if (arrDate == "" && deppDate == "") {
-      console.log("nie wybrano daty ");
       tripWays = 0;
     } else if (arrDate == "" || deppDate == "") {
-      console.log("wybran otylko jeden kier wylot lub powror");
       tripWays = 1;
     } else if (arrDate != "" && deppDate != "") {
-      console.log("wybran dwa  kier wylot i powrót");
       tripWays = 2;
     }
   }
@@ -1539,4 +1545,4 @@ reservation.addEventListener('click', function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=index.7e795d7a61b02f621d96.bundle.js.map
+//# sourceMappingURL=index.59c627a03078ac3ac893.bundle.js.map
