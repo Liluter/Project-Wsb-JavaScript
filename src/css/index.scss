@@ -3,6 +3,29 @@
 /*Inter font*/
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+
+$btnbackground : #cedee7;
+$mainDarkBlue : #2B518B ;
+$mainLightColor: #e5e5e5;
+$whiteColor: #FFFFFF;
+$loginColor: #7d92b3;
+
+
+@mixin fontStyle {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1em;
+}
+@mixin justAlignCenter {
+    justify-content: center;
+    align-items: center;
+}
+@mixin flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
 /*scss for index.js and so index.html */
 :root {
     --marg1: 0px;
@@ -20,8 +43,7 @@
 
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    @include justAlignCenter;
     height: 100vh;
     background: url(../assets/images/clouds_1920.jpg) top center;
     background-repeat: no-repeat;
@@ -62,7 +84,7 @@ g.selected {
     min-width: 320px;
     width: calc(100% - 2 * var(--marg2));
     height: 74px;
-    background: #e5e5e5;
+    background: $mainLightColor;
     border-radius: 10px;
     margin: var(--marg2);
     grid-column: 1 / span 2;
@@ -70,17 +92,15 @@ g.selected {
 }
 
 
-.logo {
-    display: flex;
-}
-
-.logo img {
+.logo { display: flex; 
+    img {
     content: url(../assets/images/Flightbook.svg);
     background-repeat: no-repeat;
     background-position: center;
     width: 150px;
     height: auto;
     margin-left: 20px;
+    }
 }
 
 .menu {
@@ -92,20 +112,21 @@ g.selected {
     margin-right: 12px;
     margin-top: auto;
     margin-bottom: auto;
-}
-
-.menu li {
+    li {
     margin-left: 8px;
     margin-right: 8px;
     display: flex;
     text-align: center;
+    }
 }
 
-li .avatar {
+li {
+    &.avatar {
     margin-left: 24px;
-}
-li .location-weather {
+    }
+    &.location-weather {
     margin-left: 20px;
+    }
 }
 
 .location-time,
@@ -115,23 +136,24 @@ li .location-weather {
     font-weight: 400;
     font-size: 1em;
     align-items: center;
-    color: #2b518b;
+    color: $mainDarkBlue;
 }
+
 .btn-login {
-    background: #7d92b3;
+    background: $loginColor;
     border-radius: 5px;
     width: 64px;
     height: 32px;
     border: none;
-    color: #e5e5e5;
-}
-.btn-login:hover {
-    background: #e5e5e5;
+    color: $mainLightColor;
+    &:hover {
+    background: $mainLightColor;
     border-radius: 5px;
     width: 64px;
     height: 32px;
-    border: 1px #7d92b3 solid;
-    color: #7d92b3;
+    border: 1px $loginColor solid;
+    color: $loginColor;
+    }
 }
 
 /*button for accepting and saving data*/
@@ -139,36 +161,20 @@ li .location-weather {
 #select-dest, #select-depart {
     width: 184px;
     height:32px;
-    background: #FFFFFF;
-    border: 1px solid #2B518B;
+    background: $whiteColor;
+    border: 1px solid $mainDarkBlue;
     box-sizing: border-box;
     border-radius: 5px;
     
 }
-
-
 
 .main {
     margin-left: 20px;
     grid-column: 1 / 2;
     grid-row: 2 / 3;
     /* background-color: rgba(255, 255, 255, 0.2); */
-}
-.aside {
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.8em;
-    color: #2b518b;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin-right: 20px;
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-}
-
-.main.content {
-    display: flex;
-    flex-direction: column;
+    &.content {
+    @include flexColumn;
     align-items: center;
     gap: 18px;
     max-width: 100%;
@@ -177,17 +183,26 @@ li .location-weather {
     border-radius: 10px;
     margin: 0px 58px 40px 8px;
     padding: 26px;
+    }
 }
+.aside {
+    @include fontStyle;
+    font-size: 0.8em;
+    color: $mainDarkBlue;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-right: 20px;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
 .aside-content {
     width: auto;
     background-color: rgba(56, 220, 231, 0.1);
     overflow: hidden;
-}
-
-.aside-content .result-text-info{
-    display: flex;
-    flex-direction: column;
+    .result-text-info{
+    @include flexColumn;
     font-size: 16px;
+    }
 }
 
 .row {
@@ -199,20 +214,13 @@ li .location-weather {
     column-gap: 18px;
 }
 
-.btn .arrival {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-}
 
 .footer {
     background-color: rgb(18, 207, 11);
     /* filter: opacity(0.5); */
     width: calc(100% - 2 * var(--marg2));
     height: 74px;
-    background: #e5e5e5;
+    background: $mainLightColor;
     border-radius: 10px;
     margin: var(--marg2);
     min-width: 320px;
@@ -221,123 +229,117 @@ li .location-weather {
 
 .btn {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    @include justAlignCenter;
     gap: 12px;
-    width: 200px;
+    width: 100%;
     height: 50px;
-    background: #cedee7;
-
+    background: $btnbackground;
     box-sizing: border-box;
     border-radius: 5px;
     padding: 8px;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1em;
+    @include fontStyle;
     align-items: center;
-    color: #2b518b;
-}
-
-.btn:hover {
-    border: 1px solid #2b518b;
-}
-
-.btn.accept {
-    background: #7d92b3;
-    border: 1px solid #e5e5e5;
+    color: $mainDarkBlue;
+    .arrival {
+    display: flex;
+    @include justAlignCenter;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    }
+    &:hover {
+    border: 1px solid $mainDarkBlue;
+    }
+    &.accept {
+    background: $loginColor;
+    border: 1px solid $mainLightColor;
     box-sizing: border-box;
     border-radius: 5px;
-    color: #e5e5e5;
+    color: $mainLightColor;
     font-size: 1.4em;
 }
-.btn.accept:hover {
+&.accept:hover {
     background: #0f68ee;
-    border: 1px solid #e5e5e5;
+    border: 1px solid $mainLightColor;
     box-sizing: border-box;
     border-radius: 5px;
-    color: #e5e5e5;
+    color: $mainLightColor;
     font-size: 1.4em;
 }
-
-.btn img {
+img {
     width: 25px;
 }
-
-.btn.passangers img {
-    width: 34px;
-}
-.btn.passangers img:hover {
-    width: 40px;
-}
-
-.sign {
-    height: 50px;
+&.passangers {
+    img {
+        width: 34px;
+        &:hover {
+            width: 40px;
+        }
+    }
 }
 
-.sign img {
-    width: 75px;
 }
+
+
 
 .numPass {
     width: 50px;
     height: 28px;
-    background-color: #e5e5e5;
-    border: 1px solid #2b518b;
+    background-color: $mainLightColor;
+    border: 1px solid $mainDarkBlue;
     border-radius: 5px;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1em;
+    @include fontStyle;
     display: flex;
-    align-items: center;
+    @include justAlignCenter;
     text-align: center;
-    justify-content: center;
-    color: #2b518b;
+    color: $mainDarkBlue;
     padding-left:11px;
 }
 
 /* main content */
-
-.main-content .sign {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.sign {
+    height: 50px;
+    img {
+    width: 75px;
+    }
+    .main-content & {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
 }
 
 .footer {
-    font-family: 'Inter' ,sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1em;
+    @include fontStyle;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #2b518b;
+    @include justAlignCenter;
+    color: $mainDarkBlue;
     text-align: center;
 }
 
 /* wklejka*/
 
+li {
+    u & {
+        display: block;
+    }
+    .menu &:last-child {
+        display: none;
+    }
+    & .avatar {
+        margin-left: 0;
+    }
+}
 
-u li {
-    display: block;
-}
-.menu li:last-child {
-    display: none;
-}
+
 .logo {
     height: auto;
     margin: 0;
-}
-.logo img {
+    img {
     margin-top: 8px;
     width: 100px;
+    }
 }
 
-li .avatar {
-    margin-left: 0;
-}
 .btn-login,
 .btn-login-apear {
     display: none;
@@ -352,26 +354,22 @@ li .avatar {
     width: 100%;
 }
 
-
-.main {
-    margin-left: 0;
-    height:auto;
-}
-
 .main-content {
     margin: 8px;
     width: auto;
     max-width: none;
     padding: 18px;
 }
-.main.content {
+
+
+.main {
+    margin-left: 0;
+    height:auto;
+    &.content {
     margin: 0 8px 8px 8px;
+    }
 }
 
-
-.btn {
-    width: 100%;
-}
 
 .footer {
     width: auto;
@@ -383,54 +381,51 @@ li .avatar {
 .template {
     width: 85%;
     height:auto;
-    background-color: #2B518B;
+    background-color: $mainDarkBlue;
     background-image: url("../assets/images/clouds_1920.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     margin:4px;
     border:1px solid rgb(181, 180, 180);
-}
-
-.template.hide {
+    &.hide {
     display: none;
+    }
 }
 
-#select-arrival-date, #select-depart-date {
+%select-tool {
     width: min-content;
     height: 32px;
-    background: #FFFFFF;
-    border: 1px solid #2B518B;
+    background: $whiteColor;
+    border: 1px solid $mainDarkBlue;
     box-sizing: border-box;
     border-radius: 5px;
     text-align: center;
     padding-bottom:2px;
-    font-family: 'Inter';
-    font-style: normal;
+    @include fontStyle;
     font-weight:500;
     font-size: 16px;
-    color: #2b518b;
+    color: $mainDarkBlue;
     align-self: center;
-    
-    
+    &:focus-visible {
+        border: 2px solid $mainDarkBlue;
+        outline: 0 solid ;
+    }
 }
 
-#select-depart-date:focus-visible, #select-arrival-date:focus-visible {
-    border: 2px solid #2B518B;
-    outline: 0 solid ;
+#select-arrival-date, #select-depart-date {
+    @extend %select-tool;
 }
+
+
 
 .det-wether-icon{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flexColumn;
+    @include justAlignCenter;
 }
 .flex, .img-info , .silos {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flexColumn;
+    @include justAlignCenter;
 }
 
 
@@ -443,8 +438,7 @@ li .avatar {
     .navbar {
         width: auto;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        @include justAlignCenter;
         min-height: auto;
         margin: 8px;
         height: auto;
@@ -453,20 +447,21 @@ li .avatar {
         
         margin: 0;
         margin-bottom: 8px;
-    }
-    .menu li {
+        li {
         display: block;
+            &:last-child {
+            display: none;
+            }
+        }
     }
-    .menu li:last-child {
-        display: none;
-    }
+
     .logo {
         height: auto;
         margin: 0;
-    }
-    .logo img {
+        img {
         margin-top: 8px;
         width: 100px;
+        }
     }
 
     li .avatar {
@@ -495,18 +490,18 @@ li .avatar {
     }
 
 
-    .main {
-        margin-left: 0;
-    }
-
+    
     .main-content {
         margin: 8px;
         width: auto;
         max-width: none;
         padding: 18px;
     }
-    .main.content {
-        margin: 8px;
+    .main {
+        margin-left: 0;
+        &.content {
+            margin: 8px;
+        }
     }
     .aside {
         height: auto;
@@ -535,8 +530,7 @@ li .avatar {
     .navbar {
         width: auto;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        @include justAlignCenter;
         min-height:auto;
         margin: 8px;
         grid-column: 1 / span 2;
@@ -546,20 +540,21 @@ li .avatar {
         justify-content: space-evenly;
         margin: 0;
         margin-bottom: 8px;
-    }
-    .menu li {
+        li {
         display: block;
+            &:last-child {
+            display: none;
+            }
+        }
     }
-    .menu li:last-child {
-        display: none;
-    }
+
     .logo {
         height: auto;
         margin: 0;
-    }
-    .logo img {
+        img {
         margin-top: 8px;
         width: 100px;
+        }
     }
 
     li .avatar {
@@ -588,10 +583,7 @@ li .avatar {
         min-width: 320px;
     }
 
-    .main {
-        margin-left: 0;
-    }
-
+    
     .main-content {
         margin: 8px;
         width: auto;
@@ -599,13 +591,15 @@ li .avatar {
         max-width: none;
         padding: 18px;
     }
-    .main.content {
-        margin: 8px;
-    
+
+    .main {
+        margin-left: 0;
+        &.content {
+            margin: 8px;
+        }
     }
     
     .aside {
-        
         grid-column: 1 / 2;
         grid-row: 3 / 4;
         margin-left: 8px;
